@@ -1,0 +1,54 @@
+---
+interface Props {
+  about: {
+    heading?: string | null;
+    paragraphs?: (string | null)[] | null;
+    quoteText?: string | null;
+    quoteAuthor?: string | null;
+    reviewsCtaLabel?: string | null;
+  };
+  googleReviewsUrl?: string | null;
+  reviewsAnchor: string;
+}
+const { about, googleReviewsUrl, reviewsAnchor } = Astro.props;
+const paragraphs = (about.paragraphs ?? []).filter(Boolean);
+const reviewsUrl = googleReviewsUrl?.trim() || reviewsAnchor;
+---
+
+<section class="about" id="fabien">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <h2 class="heading-blue">{about.heading}</h2>
+        {paragraphs.map((p) => <p class="body-p">{p}</p>)}
+      </div>
+      {about.quoteText && (
+        <figure class="card quote-card">
+          <p class="stars" aria-label="5/5">★★★★★</p>
+          <blockquote>“{about.quoteText}”</blockquote>
+          {about.quoteAuthor && <figcaption class="muted">{about.quoteAuthor}</figcaption>}
+          {about.reviewsCtaLabel && (
+            <a
+              class="btn btn-secondary"
+              href={reviewsUrl}
+              {...(googleReviewsUrl?.trim() ? { target: '_blank', rel: 'noopener' } : {})}
+            >{about.reviewsCtaLabel}</a>
+          )}
+        </figure>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: start; }
+  .heading-blue { color: var(--blue-deep); }
+  .body-p { margin-top: 18px; max-width: 60ch; }
+  .quote-card { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .quote-card blockquote { font-style: italic; font-size: 16px; }
+  .quote-card figcaption { font-size: 14px; font-weight: 600; }
+  .quote-card .stars { margin: 0; }
+  @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+  /* leave room for the hero portrait bleed on desktop */
+  @media (min-width: 821px) { .about-grid > figure { margin-top: 12px; } }
+</style>

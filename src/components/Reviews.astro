@@ -1,0 +1,49 @@
+---
+interface Props {
+  id: string;
+  reviews: {
+    heading?: string | null;
+    items?: ({ author?: string | null; date?: string | null; rating?: number | null; text?: string | null } | null)[] | null;
+    moreCtaLabel?: string | null;
+  };
+  googleReviewsUrl?: string | null;
+}
+const { id, reviews, googleReviewsUrl } = Astro.props;
+const items = (reviews.items ?? []).filter(Boolean);
+const moreUrl = googleReviewsUrl?.trim();
+---
+
+<section id={id}>
+  <div class="wrap">
+    <h2 class="heading">{reviews.heading}</h2>
+    <div class="grid g2">
+      {items.map((r) => (
+        <figure class="card review">
+          <p class="stars" aria-label={`${r!.rating ?? 5}/5`}>
+            {'★'.repeat(Math.max(1, Math.min(5, r!.rating ?? 5)))}
+          </p>
+          <blockquote>“{r!.text}”</blockquote>
+          <figcaption>
+            <span class="author">{r!.author}</span>
+            {r!.date && <span class="date muted"> · {r!.date}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    {reviews.moreCtaLabel && moreUrl && (
+      <div class="row cta-row">
+        <a class="btn btn-secondary" href={moreUrl} target="_blank" rel="noopener">{reviews.moreCtaLabel}</a>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .heading { color: var(--blue-deep); margin-bottom: 30px; }
+  .review { display: flex; flex-direction: column; gap: 12px; }
+  .review blockquote { font-style: italic; font-size: 16px; }
+  .review .author { font-size: 14px; font-weight: 600; }
+  .review .date { font-size: 12px; font-weight: 500; }
+  .review .stars { margin: 0; }
+  .cta-row { margin-top: 26px; }
+</style>

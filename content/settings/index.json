@@ -1,0 +1,19 @@
+{
+  "phone": "06 98 69 48 59",
+  "displayEmail": "contact@fabosteo.fr",
+  "formRecipient": "contact@fabosteo.fr",
+  "bookingUrl": "",
+  "googleReviewsUrl": "",
+  "socials": {
+    "instagram": "",
+    "tiktok": "",
+    "facebook": "",
+    "linkedin": "",
+    "youtube": ""
+  },
+  "clinicLinks": [
+    { "name": "Talence", "mapsUrl": "" },
+    { "name": "Mérignac", "mapsUrl": "" },
+    { "name": "Bordeaux", "mapsUrl": "" }
+  ]
+}

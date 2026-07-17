@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { resolveImage } from '../lib/images';
+
+interface Props {
+  hero: {
+    badge?: string | null;
+    heading?: string | null;
+    subheading?: string | null;
+    ctaLabel?: string | null;
+    photo?: string | null;
+    photoAlt?: string | null;
+  };
+  phone: string;
+  bookHref: string;
+  reviewsCount?: string | null;
+}
+const { hero, phone, bookHref } = Astro.props;
+const photo = resolveImage(hero.photo);
+const phoneHref = 'tel:+33' + phone.replace(/\s/g, '').replace(/^0/, '');
+---
+
+<section class="hero bg-blue on-blue" id="top">
+  <div class="wrap">
+    <div class="accent-bar" style="width:64px;margin-bottom:28px"></div>
+    <div class="hero-grid">
+      <div>
+        {hero.badge && (
+          <p class="badge">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span>{hero.badge}</span>
+          </p>
+        )}
+        <h1>{hero.heading}</h1>
+        {hero.subheading && <p class="lead muted subhead">{hero.subheading}</p>}
+        <div class="row">
+          <a class="btn btn-lg btn-primary" href={bookHref}>
+            <Icon name="calendar" />
+            <span>{hero.ctaLabel}</span>
+          </a>
+          <a class="btn btn-lg btn-ghost" href={phoneHref}>
+            <Icon name="phone" />
+            {phone}
+          </a>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <div class="glow" aria-hidden="true"></div>
+        {photo && (
+          <Image
+            src={photo}
+            alt={hero.photoAlt ?? ''}
+            widths={[420, 640, 900]}
+            sizes="(max-width: 820px) 92vw, 45vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* The portrait bleeds over the top padding of the About section (design example). */
+  .hero { padding-bottom: 0; overflow: visible; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+  .hero-grid > div:first-child { padding-bottom: var(--space-section); }
+  .badge { margin-bottom: 22px; }
+  .subhead { margin: 20px 0 30px; max-width: 30ch; }
+  .photo-frame { position: relative; margin-bottom: -80px; z-index: 2; align-self: end; }
+  .glow { position: absolute; inset: -6%; background: var(--gradient); filter: blur(28px); opacity: .5; border-radius: 40px; z-index: 0; }
+  .photo-frame img { position: relative; z-index: 1; width: 100%; height: auto; border-radius: var(--radius-photo); display: block; }
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-grid > div:first-child { padding-bottom: 0; }
+    .photo-frame { margin-bottom: 0; padding-bottom: 48px; align-self: auto; }
+  }
+</style>

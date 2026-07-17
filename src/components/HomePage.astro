@@ -1,0 +1,91 @@
+---
+// The full one-page layout, shared by / (fr) and /en/ (en).
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import ForWhom from './ForWhom.astro';
+import Expertise from './Expertise.astro';
+import Reviews from './Reviews.astro';
+import Clinics from './Clinics.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
+import CookieBanner from './CookieBanner.astro';
+import { getPage, getSettings, bookHref } from '../lib/cms';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+const { locale } = Astro.props;
+
+const page = await getPage(locale === 'fr' ? 'fr.json' : 'en.json');
+const settings = await getSettings();
+const book = bookHref(settings);
+
+const anchors =
+  locale === 'fr'
+    ? { forWhom: 'pour-qui', reviews: 'avis', clinics: 'cabinets' }
+    : { forWhom: 'for-whom', reviews: 'reviews', clinics: 'clinics' };
+
+const path = locale === 'fr' ? '/' : '/en/';
+const alternatePath = locale === 'fr' ? '/en/' : '/';
+
+const site = (import.meta.env.SITE ?? 'https://fabosteo77.github.io').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Fabien Marié — Ostéopathe D.O',
+  url: site + path,
+  telephone: '+33698694859',
+  email: settings.displayEmail,
+  medicalSpecialty: 'Osteopathic',
+  image: site + '/images/fabien-portrait.png',
+  department: (page.clinics?.items ?? []).filter(Boolean).map((clinic) => ({
+    '@type': 'MedicalBusiness',
+    name: `Fabien Marié — Ostéopathe (${clinic!.name})`,
+    address: { '@type': 'PostalAddress', streetAddress: clinic!.address, addressCountry: 'FR' },
+  })),
+};
+---
+
+<Base
+  locale={locale}
+  title={page.seo.metaTitle}
+  description={page.seo.metaDescription}
+  path={path}
+  alternatePath={alternatePath}
+  ogImage={page.seo.ogImage || undefined}
+  jsonLd={jsonLd}
+>
+  <Header header={page.header ?? {}} locale={locale} />
+  <main id="main">
+    <Hero hero={page.hero ?? {}} phone={settings.phone} bookHref={book} />
+    <About
+      about={page.about ?? {}}
+      googleReviewsUrl={settings.googleReviewsUrl}
+      reviewsAnchor={'#' + anchors.reviews}
+    />
+    <ForWhom
+      id={anchors.forWhom}
+      forWhom={page.forWhom ?? {}}
+      bookHref={book}
+      clinicsAnchor={'#' + anchors.clinics}
+    />
+    <Expertise id="expertise" expertise={page.expertise ?? {}} />
+    <Reviews id={anchors.reviews} reviews={page.reviews ?? {}} googleReviewsUrl={settings.googleReviewsUrl} />
+    <Clinics
+      id={anchors.clinics}
+      clinics={page.clinics ?? {}}
+      clinicLinks={settings.clinicLinks}
+      bookHref={book}
+      locale={locale}
+    />
+    <Contact
+      contact={page.contact ?? {}}
+      settings={settings}
+      clinicNames={(page.clinics?.items ?? []).filter(Boolean).map((c) => c!.name ?? '')}
+    />
+  </main>
+  <Footer footer={page.footer ?? {}} header={page.header ?? {}} settings={settings} locale={locale} />
+  <CookieBanner cookie={page.cookie ?? {}} />
+</Base>

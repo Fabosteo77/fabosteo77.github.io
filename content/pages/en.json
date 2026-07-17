@@ -1,0 +1,197 @@
+{
+  "locale": "en",
+  "seo": {
+    "metaTitle": "Fabien Marié — Osteopath D.O in Talence, Mérignac and Bordeaux",
+    "metaDescription": "Osteopath D.O in Gironde, France: a gentle, personalized approach for all ages — adults, pregnant women, infants. 3 clinics: Talence, Mérignac, Bordeaux. English spoken.",
+    "ogImage": ""
+  },
+  "header": {
+    "links": [
+      { "label": "About", "href": "#fabien" },
+      { "label": "Patients", "href": "#for-whom" },
+      { "label": "Expertise", "href": "#expertise" },
+      { "label": "Locations", "href": "#clinics" }
+    ],
+    "contactLabel": "Contact",
+    "switcherLabel": "Français",
+    "switcherHref": "/"
+  },
+  "hero": {
+    "badge": "10 Google Reviews — 5 stars",
+    "heading": "Rediscover Your Movement, Discover Your Dynamism",
+    "subheading": "A gentle and personalized approach, suited for all ages.",
+    "ctaLabel": "Book an Appointment",
+    "photo": "/images/fabien-portrait.png",
+    "photoAlt": "Fabien Marié, osteopath D.O"
+  },
+  "about": {
+    "heading": "About Fabien Marié",
+    "paragraphs": [
+      "With nearly 20 years of practice, I master all osteopathic techniques. I also integrate complementary therapeutic approaches to offer you unique and personalized care tailored to your needs.",
+      "I treat your body as a whole for lasting healing. Having lived in England and the United States, I can offer you consultations in English."
+    ],
+    "quoteText": "A professional of great kindness, very human and attentive. You immediately feel at ease in his expert hands.",
+    "quoteAuthor": "Maelys Boirie",
+    "reviewsCtaLabel": "See all reviews"
+  },
+  "forWhom": {
+    "heading": "For Whom?",
+    "subheading": "I support you from 0 to 99 years old, from head to toe, to relieve, prevent and optimize your daily health.",
+    "intro": "Specialized in functional disorders, I treat of course back pain and radiating pain like sciatica, but also a wide range of disorders for all ages:",
+    "cards": [
+      {
+        "icon": "activity",
+        "title": "Adults & Seniors",
+        "items": [
+          "Joint and muscle pain",
+          "Neuralgia",
+          "Recurring ENT disorders",
+          "Digestive disorders",
+          "Female disorders",
+          "Sleep disorders"
+        ]
+      },
+      {
+        "icon": "heart",
+        "title": "Pregnant Women",
+        "items": ["Childbirth preparation", "Pregnancy related pain"]
+      },
+      {
+        "icon": "baby",
+        "title": "Infants & Children",
+        "items": [
+          "Digestive disorders",
+          "Developmental disorders",
+          "Unexplained crying",
+          "Postnatal follow-up"
+        ]
+      }
+    ],
+    "footnote": "💡 Osteopathy is preventive medicine: the earlier we act, the better!",
+    "bookCtaLabel": "Book an Appointment",
+    "clinicsCtaLabel": "See the clinics"
+  },
+  "expertise": {
+    "heading": "My Areas of Expertise",
+    "cards": [
+      {
+        "icon": "zap",
+        "title": "Sports Osteopathy",
+        "body": "Prevention and treatment of sports injuries to optimize performance and comfort during activity.",
+        "image": ""
+      },
+      {
+        "icon": "baby",
+        "title": "Newborns",
+        "body": "Treatment of functional disorders in infants (colic, torticollis, plagiocephaly, etc.) to restore their mobility and comfort.",
+        "image": ""
+      },
+      {
+        "icon": "smile",
+        "title": "Pediatrics",
+        "body": "Management of functional disorders in children (postural, digestive, sequelae of falls, sleep disorders, etc.) for harmonious and comfortable growth.",
+        "image": ""
+      },
+      {
+        "icon": "brain",
+        "title": "Psychosomatic Approach",
+        "body": "A personalized approach to osteopathy that I can combine with sophrology, hypnosis or relaxation techniques according to your needs.",
+        "image": ""
+      }
+    ]
+  },
+  "reviews": {
+    "heading": "Patient Reviews",
+    "items": [
+      {
+        "author": "Pascaline Steinbach",
+        "date": "8 months ago",
+        "rating": 5,
+        "text": "I consulted Fabien Marié for intense shoulder pain. From the first session, I appreciated his listening, availability and gentle approach. He was able to …"
+      },
+      {
+        "author": "Adrien Simon",
+        "date": "10 months ago",
+        "rating": 5,
+        "text": "A passionate osteopath, attentive and highly professional. He takes time to explain each gesture with clarity, which is very reassuring. From the welcome, you …"
+      },
+      {
+        "author": "Maelys Boirie",
+        "date": "10 months ago",
+        "rating": 5,
+        "text": "A professional of great kindness, very human and attentive. You immediately feel at ease in his expert hands. Effective, he was able to relieve my pain from …"
+      },
+      {
+        "author": "Sophie Hartpence",
+        "date": "8 months ago",
+        "rating": 5,
+        "text": "Very good osteopath. Great listening and lots of professionalism!"
+      }
+    ],
+    "moreCtaLabel": "View More Reviews"
+  },
+  "clinics": {
+    "heading": "My Clinics",
+    "subheading": "I welcome you in 3 clinics in Gironde. I have surrounded myself with collaborators in each clinic to receive you the same day if necessary.",
+    "bookCtaLabel": "Book Appointment",
+    "items": [
+      {
+        "name": "Talence",
+        "address": "Château Labro, 13 Impasse Peybouquey, 33400 Talence",
+        "hours": "08h00 - 20h00",
+        "note": "Free parking available"
+      },
+      {
+        "name": "Mérignac",
+        "address": "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac",
+        "hours": "08h00 - 20h00",
+        "note": ""
+      },
+      {
+        "name": "Bordeaux",
+        "address": "52 Rue Huguerie, 33000 Bordeaux",
+        "hours": "08h00 - 20h00",
+        "note": ""
+      }
+    ],
+    "payment": [
+      "💳 Checks, cash and credit card",
+      "Not reimbursed by Health insurance",
+      "Reimbursement possible depending on your health insurance"
+    ]
+  },
+  "contact": {
+    "heading": "Contact Me",
+    "subheading": "Have a question? Feel free to contact me directly.",
+    "byPhoneLabel": "By Phone",
+    "socialLabel": "Social Media",
+    "form": {
+      "heading": "Get in Touch",
+      "intro": "Leave your details and a short message below.",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "emailLabel": "Email address",
+      "phoneLabel": "Phone number",
+      "subjectLabel": "Nature of your issue",
+      "messageLabel": "Your message",
+      "clinicQuestion": "At what location would you like to see us?",
+      "prefQuestion": "How shall we get back to you?",
+      "prefEmail": "Email",
+      "prefPhone": "Phone",
+      "submitLabel": "Submit",
+      "successMessage": "Thank you! Your message has been sent. I'll get back to you shortly.",
+      "errorMessage": "Sorry, something went wrong. Please try again or call me directly at 06 98 69 48 59."
+    }
+  },
+  "cookie": {
+    "message": "This site uses no tracking cookies. If third-party services (statistics, online booking) are ever added, they will only load with your consent.",
+    "acceptLabel": "OK",
+    "declineLabel": "Decline"
+  },
+  "footer": {
+    "navLabel": "Navigation",
+    "socialLabel": "Social Media",
+    "contactLabel": "Contact",
+    "legalLinkText": "Legal notice & privacy"
+  }
+}

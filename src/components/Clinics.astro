@@ -1,0 +1,61 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  id: string;
+  clinics: {
+    heading?: string | null;
+    subheading?: string | null;
+    bookCtaLabel?: string | null;
+    items?: ({ name?: string | null; address?: string | null; hours?: string | null; note?: string | null } | null)[] | null;
+    payment?: (string | null)[] | null;
+  };
+  clinicLinks?: ({ name?: string | null; mapsUrl?: string | null } | null)[] | null;
+  bookHref: string;
+  locale: 'fr' | 'en';
+}
+const { id, clinics, clinicLinks, bookHref, locale } = Astro.props;
+const items = (clinics.items ?? []).filter(Boolean);
+const payment = (clinics.payment ?? []).filter(Boolean);
+const mapsFor = (name?: string | null) =>
+  (clinicLinks ?? []).find((c) => c?.name === name)?.mapsUrl?.trim() || undefined;
+const directionsLabel = locale === 'fr' ? 'Itinéraire' : 'Directions';
+---
+
+<section class="bg-blue on-blue" id={id}>
+  <div class="wrap">
+    <h2>{clinics.heading}</h2>
+    {clinics.subheading && <p class="lead muted intro">{clinics.subheading}</p>}
+    <div class="grid g3">
+      {items.map((clinic) => {
+        const maps = mapsFor(clinic!.name);
+        return (
+          <div class="card clinic">
+            <h3>{clinic!.name}</h3>
+            <div class="divider"></div>
+            <p class="line"><Icon name="map-pin" /><span>{clinic!.address}</span></p>
+            {clinic!.hours && <p class="line"><Icon name="clock" /><span>{clinic!.hours}</span></p>}
+            {clinic!.note && <p class="line note muted"><span>{clinic!.note}</span></p>}
+            <div class="clinic-ctas row">
+              <a class="btn btn-primary" href={bookHref}><span>{clinics.bookCtaLabel}</span></a>
+              {maps && <a class="btn btn-secondary" href={maps} target="_blank" rel="noopener">{directionsLabel}</a>}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+    {payment.length > 0 && (
+      <p class="payment muted">{payment.join('  ·  ')}</p>
+    )}
+  </div>
+</section>
+
+<style>
+  .intro { max-width: 62ch; margin-bottom: 34px; }
+  .clinic { display: flex; flex-direction: column; }
+  .clinic .line { display: flex; gap: 10px; font: var(--t-body-sm); padding: 4px 0; align-items: flex-start; }
+  .clinic .line :global(svg) { width: 17px; height: 17px; flex: none; margin-top: 3px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+  .clinic .note { padding-left: 27px; }
+  .clinic-ctas { margin-top: auto; padding-top: 18px; }
+  .payment { margin-top: 28px; font-size: 14px; }
+</style>

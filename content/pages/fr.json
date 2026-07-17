@@ -1,0 +1,197 @@
+{
+  "locale": "fr",
+  "seo": {
+    "metaTitle": "Fabien Marié — Ostéopathe D.O à Talence, Mérignac et Bordeaux",
+    "metaDescription": "Ostéopathe D.O en Gironde : une approche douce et personnalisée pour tous les âges — adultes, femmes enceintes, nourrissons. 3 cabinets : Talence, Mérignac, Bordeaux.",
+    "ogImage": ""
+  },
+  "header": {
+    "links": [
+      { "label": "À propos", "href": "#fabien" },
+      { "label": "Pour qui ?", "href": "#pour-qui" },
+      { "label": "Expertise", "href": "#expertise" },
+      { "label": "Cabinets", "href": "#cabinets" }
+    ],
+    "contactLabel": "Contact",
+    "switcherLabel": "English",
+    "switcherHref": "/en/"
+  },
+  "hero": {
+    "badge": "10 Avis Google — 5 étoiles",
+    "heading": "Retrouvez votre mouvement, découvrez votre dynamisme",
+    "subheading": "Une approche douce et personnalisée, adaptée pour tous les âges.",
+    "ctaLabel": "Prendre rendez-vous",
+    "photo": "/images/fabien-portrait.png",
+    "photoAlt": "Fabien Marié, ostéopathe D.O"
+  },
+  "about": {
+    "heading": "À propos de Fabien Marié",
+    "paragraphs": [
+      "Fort de près de 20 ans de pratique, je maîtrise l'ensemble des techniques ostéopathiques. J'intègre également des approches thérapeutiques complémentaires pour vous offrir une prise en charge unique et adaptée à vos besoins.",
+      "Je traite votre corps dans sa globalité pour une guérison durable. Ayant vécu en Angleterre et aux États-Unis, je peux vous proposer des consultations en anglais."
+    ],
+    "quoteText": "Un professionnel d'une grande gentillesse, très humain et à l'écoute. On se sent immédiatement à l'aise entre ses mains expertes.",
+    "quoteAuthor": "Maelys Boirie",
+    "reviewsCtaLabel": "Voir tous les avis"
+  },
+  "forWhom": {
+    "heading": "Pour qui ?",
+    "subheading": "Je vous accompagne de 0 à 99 ans, de la tête aux pieds, pour soulager, prévenir et optimiser votre santé au quotidien.",
+    "intro": "Spécialisé dans les troubles fonctionnels, je traite bien sûr les douleurs au dos et les douleurs irradiantes comme la sciatique, mais aussi une large gamme de troubles pour tous les âges :",
+    "cards": [
+      {
+        "icon": "activity",
+        "title": "Adultes et seniors",
+        "items": [
+          "Douleurs articulaires et musculaires",
+          "Névralgies",
+          "Troubles ORL récidivants",
+          "Troubles digestifs",
+          "Troubles féminins",
+          "Troubles du sommeil"
+        ]
+      },
+      {
+        "icon": "heart",
+        "title": "Femmes enceintes",
+        "items": ["Préparation à l'accouchement", "Douleurs de grossesse"]
+      },
+      {
+        "icon": "baby",
+        "title": "Nourrissons et enfants",
+        "items": [
+          "Troubles digestifs",
+          "Troubles du développement",
+          "Pleurs inexpliqués",
+          "Suivi post-natal"
+        ]
+      }
+    ],
+    "footnote": "💡 L'ostéopathie est une médecine préventive : plus on agit tôt, mieux c'est !",
+    "bookCtaLabel": "Prendre rendez-vous",
+    "clinicsCtaLabel": "Voir les cabinets"
+  },
+  "expertise": {
+    "heading": "Mes domaines d'expertise",
+    "cards": [
+      {
+        "icon": "zap",
+        "title": "Ostéopathie sportive",
+        "body": "Prévention et traitement des blessures sportives pour optimiser la performance et le confort lors de l'activité.",
+        "image": ""
+      },
+      {
+        "icon": "baby",
+        "title": "Nouveau-nés",
+        "body": "Traitement des troubles fonctionnels du nourrisson (coliques, torticolis, plagiocéphalie, etc.) pour restaurer leur mobilité et leur confort.",
+        "image": ""
+      },
+      {
+        "icon": "smile",
+        "title": "Pédiatrie",
+        "body": "Prise en charge des troubles fonctionnels de l'enfant (posturaux, digestifs, séquelles de chutes, troubles du sommeil, etc.) pour une croissance harmonieuse et confortable.",
+        "image": ""
+      },
+      {
+        "icon": "brain",
+        "title": "Approche psychosomatique",
+        "body": "Une approche personnelle d'ostéopathie que je pourrai associer avec des techniques de sophrologie, d'hypnose ou de relaxation selon vos besoins.",
+        "image": ""
+      }
+    ]
+  },
+  "reviews": {
+    "heading": "Avis de mes patients",
+    "items": [
+      {
+        "author": "Pascaline Steinbach",
+        "date": "il y a 8 mois",
+        "rating": 5,
+        "text": "J'ai consulté Fabien Marié suite à une douleur intense à l'épaule. Dès la première séance, j'ai apprécié son écoute, sa disponibilité et sa douceur dans …"
+      },
+      {
+        "author": "Adrien Simon",
+        "date": "il y a 10 mois",
+        "rating": 5,
+        "text": "Un ostéopathe passionné, à l'écoute et d'un grand professionnalisme. Il prend le temps d'expliquer chaque geste avec clarté, ce qui est très rassurant. Dès …"
+      },
+      {
+        "author": "Maelys Boirie",
+        "date": "il y a 8 mois",
+        "rating": 5,
+        "text": "Un professionnel d'une grande gentillesse, très humain et à l'écoute. On se sent immédiatement à l'aise entre ses mains expertes. Efficace, il a su soulager …"
+      },
+      {
+        "author": "Sophie Hartpence",
+        "date": "il y a 8 mois",
+        "rating": 5,
+        "text": "Très bon ostéopathe. Grande écoute et beaucoup de professionnalisme !"
+      }
+    ],
+    "moreCtaLabel": "Voir plus d'avis"
+  },
+  "clinics": {
+    "heading": "Mes cabinets",
+    "subheading": "Je vous accueille au sein de 3 cabinets en Gironde. Je me suis entouré de collaborateurs dans chaque cabinet pour vous recevoir dans la journée si nécessaire.",
+    "bookCtaLabel": "Prendre RDV",
+    "items": [
+      {
+        "name": "Talence",
+        "address": "Château Labro, 13 Impasse Peybouquey, 33400 Talence",
+        "hours": "08h00 - 20h00",
+        "note": "Parking gratuit à disposition"
+      },
+      {
+        "name": "Mérignac",
+        "address": "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac",
+        "hours": "08h00 - 20h00",
+        "note": ""
+      },
+      {
+        "name": "Bordeaux",
+        "address": "52 Rue Huguerie, 33000 Bordeaux",
+        "hours": "08h00 - 20h00",
+        "note": ""
+      }
+    ],
+    "payment": [
+      "💳 Chèques, espèces et carte bancaire",
+      "Non remboursé par l'Assurance Maladie",
+      "Remboursement possible selon votre mutuelle"
+    ]
+  },
+  "contact": {
+    "heading": "Me contacter",
+    "subheading": "Une question ? N'hésitez pas à me contacter directement.",
+    "byPhoneLabel": "Par téléphone",
+    "socialLabel": "Réseaux sociaux",
+    "form": {
+      "heading": "Me contacter",
+      "intro": "Laissez vos coordonnées et un court message ci-dessous.",
+      "firstNameLabel": "Prénom",
+      "lastNameLabel": "Nom",
+      "emailLabel": "Adresse email",
+      "phoneLabel": "Numéro de téléphone",
+      "subjectLabel": "Sujet de votre demande",
+      "messageLabel": "Votre message",
+      "clinicQuestion": "Quel cabinet souhaitez-vous consulter ?",
+      "prefQuestion": "Comment vous recontacter ?",
+      "prefEmail": "Email",
+      "prefPhone": "Téléphone",
+      "submitLabel": "Envoyer",
+      "successMessage": "Merci ! Votre message a bien été envoyé. Je vous répondrai au plus vite.",
+      "errorMessage": "Désolé, l'envoi a échoué. Réessayez dans un instant ou appelez-moi directement au 06 98 69 48 59."
+    }
+  },
+  "cookie": {
+    "message": "Ce site n'utilise aucun cookie de suivi. Si des services tiers (statistiques, prise de rendez-vous) sont ajoutés un jour, ils ne se chargeront qu'avec votre accord.",
+    "acceptLabel": "D'accord",
+    "declineLabel": "Refuser"
+  },
+  "footer": {
+    "navLabel": "Navigation",
+    "socialLabel": "Réseaux sociaux",
+    "contactLabel": "Contact",
+    "legalLinkText": "Mentions légales & confidentialité"
+  }
+}

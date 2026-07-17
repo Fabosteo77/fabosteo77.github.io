@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  id: string;
+  forWhom: {
+    heading?: string | null;
+    subheading?: string | null;
+    intro?: string | null;
+    cards?: ({ icon?: string | null; title?: string | null; items?: (string | null)[] | null } | null)[] | null;
+    footnote?: string | null;
+    bookCtaLabel?: string | null;
+    clinicsCtaLabel?: string | null;
+  };
+  bookHref: string;
+  clinicsAnchor: string;
+}
+const { id, forWhom, bookHref, clinicsAnchor } = Astro.props;
+const cards = (forWhom.cards ?? []).filter(Boolean);
+---
+
+<section class="bg-blue on-blue" id={id}>
+  <div class="wrap">
+    <h2>{forWhom.heading}</h2>
+    {forWhom.subheading && <p class="lead muted intro">{forWhom.subheading}</p>}
+    {forWhom.intro && <p class="muted intro-2">{forWhom.intro}</p>}
+    <div class="grid g3">
+      {cards.map((card) => (
+        <div class="card">
+          <div class="chip-icon"><Icon name={card!.icon ?? 'activity'} /></div>
+          <h3>{card!.title}</h3>
+          <div class="divider"></div>
+          <ul class="clean">
+            {(card!.items ?? []).filter(Boolean).map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+    {forWhom.footnote && <p class="footnote muted">{forWhom.footnote}</p>}
+    <div class="row ctas">
+      {forWhom.bookCtaLabel && (
+        <a class="btn btn-primary" href={bookHref}><span>{forWhom.bookCtaLabel}</span></a>
+      )}
+      {forWhom.clinicsCtaLabel && (
+        <a class="btn btn-secondary" href={clinicsAnchor}>{forWhom.clinicsCtaLabel}</a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro { max-width: 60ch; margin-bottom: 12px; }
+  .intro-2 { max-width: 70ch; margin-bottom: 34px; font-size: 16px; }
+  .footnote { margin-top: 26px; font-size: 15px; }
+  .ctas { margin-top: 26px; }
+</style>

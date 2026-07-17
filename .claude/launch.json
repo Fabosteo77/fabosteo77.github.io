@@ -2,10 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "preview",
+      "name": "site",
       "runtimeExecutable": "cmd.exe",
-      "runtimeArgs": ["/c", "set PATH=C:\\Program Files\\nodejs;%PATH% && npx -y serve . -l 4321 --no-clipboard"],
+      "runtimeArgs": ["/c", "set PATH=C:\\Program Files\\nodejs;%PATH% && npm run tina:dev"],
       "port": 4321
+    },
+    {
+      "name": "design-preview",
+      "runtimeExecutable": "cmd.exe",
+      "runtimeArgs": ["/c", "set PATH=C:\\Program Files\\nodejs;%PATH% && npx -y serve . -l 4399 --no-clipboard"],
+      "port": 4399
     }
   ]
 }

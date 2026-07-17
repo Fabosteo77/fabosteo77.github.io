@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { resolveImage } from '../lib/images';
+
+interface Props {
+  id: string;
+  expertise: {
+    heading?: string | null;
+    cards?: ({ icon?: string | null; title?: string | null; body?: string | null; image?: string | null } | null)[] | null;
+  };
+}
+const { id, expertise } = Astro.props;
+const cards = (expertise.cards ?? []).filter(Boolean);
+---
+
+<section id={id}>
+  <div class="wrap">
+    <h2 class="heading">{expertise.heading}</h2>
+    <div class="grid g2">
+      {cards.map((card) => {
+        const img = resolveImage(card!.image);
+        return (
+          <div class="card">
+            {img ? (
+              <Image class="card-img" src={img} alt="" widths={[400, 700]} sizes="(max-width: 768px) 92vw, 480px" />
+            ) : (
+              <div class="chip-icon"><Icon name={card!.icon ?? 'activity'} /></div>
+            )}
+            <h3 class="card-title">{card!.title}</h3>
+            <p class="muted body">{card!.body}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .heading { color: var(--blue-deep); margin-bottom: 30px; }
+  .card-title { color: var(--blue-deep); font-size: 20px; font-weight: 600; letter-spacing: -0.2px; }
+  .body { margin-top: 10px; font: var(--t-body-sm); }
+  .card-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 16px; }
+</style>

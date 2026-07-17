@@ -9,5 +9,12 @@
     "preview": "astro preview",
     "tina:dev": "tinacms dev -c \"astro dev\"",
     "tina:build": "tinacms build --skip-cloud-checks --content=local -c \"astro build\""
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/figtree": "^5.2.10",
+    "@tinacms/cli": "^2.5.6",
+    "astro": "^7.1.0",
+    "tinacms": "^3.11.0"
   }
 }

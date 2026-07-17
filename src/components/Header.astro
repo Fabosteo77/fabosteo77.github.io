@@ -1,0 +1,117 @@
+---
+import Icon from './Icon.astro';
+import logo from '../assets/images/logo.png';
+
+interface Props {
+  header: {
+    links?: ({ label?: string | null; href?: string | null } | null)[] | null;
+    contactLabel?: string | null;
+    switcherLabel?: string | null;
+    switcherHref?: string | null;
+  };
+  locale: 'fr' | 'en';
+}
+const { header, locale } = Astro.props;
+const links = (header.links ?? []).filter((l) => l?.label && l?.href);
+const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
+---
+
+<header class="site-header on-blue">
+  <div class="wrap header-inner">
+    <a class="brand" href={locale === 'fr' ? '/' : '/en/'}>
+      <img src={logo.src} width={logo.width} height={logo.height} alt="Fabien Marié — Ostéopathe D.O" />
+    </a>
+    <nav class="nav-links" aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}>
+      {links.map((l) => <a href={l!.href}>{l!.label}</a>)}
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary header-contact" href="#contact"><span>{header.contactLabel}</span></a>
+      <a class="lang-switch" href={header.switcherHref ?? '/'} aria-label={locale === 'fr' ? 'Switch to English' : 'Passer en français'}>
+        {header.switcherLabel}
+        <Icon name="globe" />
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={menuLabel}>
+        <Icon name="menu" class="icon-menu" />
+        <Icon name="close" class="icon-close" />
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label={locale === 'fr' ? 'Navigation mobile' : 'Mobile navigation'} hidden>
+    {links.map((l) => <a href={l!.href}>{l!.label}</a>)}
+    <a href="#contact">{header.contactLabel}</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--blue-deep);
+    transition: box-shadow .2s var(--ease);
+  }
+  .site-header.scrolled { box-shadow: var(--shadow-header); }
+  .header-inner { display: flex; align-items: center; height: 82px; }
+  .brand { display: flex; align-items: center; flex: none; text-decoration: none; }
+  .brand img { height: 52px; width: auto; display: block; }
+  .nav-links { flex: 1; display: flex; justify-content: center; gap: 38px; }
+  .nav-links a { color: #fff; font-size: 16px; font-weight: 500; text-decoration: none; opacity: .9; transition: opacity var(--dur-fast); }
+  .nav-links a:hover { opacity: 1; }
+  .header-cta { flex: none; display: flex; align-items: center; gap: 14px; margin-left: auto; }
+  .header-contact { padding: 11px 16px; font-size: 15px; border: 1px solid transparent; }
+  .lang-switch {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font); font-size: 15px; font-weight: 500; color: #fff;
+    background: transparent; border: 1px solid var(--border-blue-btn);
+    border-radius: var(--radius-btn); padding: 11px 16px; cursor: pointer;
+    text-decoration: none; transition: background var(--dur-fast);
+  }
+  .lang-switch:hover { background: rgba(255,255,255,.12); }
+  .lang-switch :global(svg) { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+  .menu-toggle {
+    display: none; background: transparent; border: 1px solid var(--border-blue-btn);
+    border-radius: var(--radius-btn); color: #fff; padding: 10px; cursor: pointer;
+  }
+  .menu-toggle :global(svg) { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.9; display: block; }
+  .menu-toggle :global(.icon-close) { display: none; }
+  .site-header.nav-open .menu-toggle :global(.icon-menu) { display: none; }
+  .site-header.nav-open .menu-toggle :global(.icon-close) { display: block; }
+  .menu-toggle:focus-visible { outline: 3px solid var(--cyan-focus); outline-offset: 3px; }
+
+  .mobile-nav { display: none; flex-direction: column; padding: 6px 0 18px; }
+  .mobile-nav a {
+    color: #fff; text-decoration: none; font-size: 17px; font-weight: 500;
+    padding: 13px var(--gutter-mobile); border-top: 1px solid var(--hairline-blue);
+  }
+  .site-header.nav-open .mobile-nav { display: flex; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+  }
+  @media (max-width: 560px) {
+    .lang-switch { padding: 10px 12px; }
+    .header-contact { display: none; } /* Contact reachable via menu; keeps the bar uncluttered */
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.site-header')!;
+  const update = () => header.classList.toggle('scrolled', window.scrollY > 6);
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+
+  const toggle = header.querySelector<HTMLButtonElement>('.menu-toggle')!;
+  const mobileNav = header.querySelector<HTMLElement>('.mobile-nav')!;
+  toggle.addEventListener('click', () => {
+    const open = header.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    mobileNav.hidden = !open;
+  });
+  mobileNav.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).tagName === 'A') {
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      mobileNav.hidden = true;
+    }
+  });
+</script>

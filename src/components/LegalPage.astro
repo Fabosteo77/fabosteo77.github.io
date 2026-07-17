@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import CookieBanner from './CookieBanner.astro';
+import { getPage, getSettings, getLegal } from '../lib/cms';
+import { richTextToHtml } from '../lib/richtext';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+const { locale } = Astro.props;
+
+const page = await getPage(locale === 'fr' ? 'fr.json' : 'en.json');
+const settings = await getSettings();
+const legal = await getLegal(locale === 'fr' ? 'fr.md' : 'en.md');
+
+const path = locale === 'fr' ? '/mentions-legales/' : '/en/legal/';
+const alternatePath = locale === 'fr' ? '/en/legal/' : '/mentions-legales/';
+const html = richTextToHtml(legal.body);
+
+// Legal page header links back to the home page sections
+const homePrefix = locale === 'fr' ? '/' : '/en/';
+const headerData = {
+  ...page.header,
+  links: (page.header?.links ?? []).map((l) =>
+    l ? { ...l, href: homePrefix + (l.href ?? '') } : l
+  ),
+  switcherHref: alternatePath,
+};
+---
+
+<Base
+  locale={locale}
+  title={legal.seo?.metaTitle ?? legal.title}
+  description={legal.seo?.metaDescription ?? legal.title}
+  path={path}
+  alternatePath={alternatePath}
+>
+  <Header header={headerData} locale={locale} />
+  <main id="main">
+    <section>
+      <div class="wrap legal-wrap">
+        <h1>{legal.title}</h1>
+        <div class="legal-body" set:html={html} />
+      </div>
+    </section>
+  </main>
+  <Footer footer={page.footer ?? {}} header={headerData} settings={settings} locale={locale} />
+  <CookieBanner cookie={page.cookie ?? {}} />
+</Base>
+
+<style>
+  .legal-wrap { max-width: 760px; }
+  h1 { font-size: 40px; color: var(--blue-deep); margin-bottom: 8px; letter-spacing: -1px; }
+  .legal-body :global(h2) { font-size: 24px; letter-spacing: -0.3px; margin: 36px 0 12px; color: var(--blue-deep); }
+  .legal-body :global(p) { margin: 12px 0; max-width: 70ch; }
+  .legal-body :global(ul), .legal-body :global(ol) { margin: 12px 0 12px 22px; }
+  .legal-body :global(li) { padding: 3px 0; }
+  .legal-body :global(a) { color: var(--blue); }
+</style>

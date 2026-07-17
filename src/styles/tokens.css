@@ -1,0 +1,106 @@
+/* ============================================================================
+   Fabien Marié — CANONICAL DESIGN TOKENS
+   Single source of truth for colours, type, spacing, radius, shadow, motion.
+   design/styleguide.html links this file; the Astro build (Phase 4) must copy
+   it to styles/tokens.css and use these variables — no hard-coded values.
+   Exact values; do not "round" or re-pick. Approved 2026-07-16.
+   ============================================================================ */
+
+:root{
+  /* --- Brand blues (text-bearing surfaces + accents) --- */
+  --blue-deep:   #0B54E0;   /* deep-blue section bg + primary button; white text 6.2:1 AA */
+  --blue:        #0F62FF;   /* brand blue: links, icon strokes, focus ring on light */
+  --blue-900:    #082E7A;   /* footer base; white 10:1 AAA */
+  --cyan:        #3FE5FA;   /* bright accent — decorative only, NEVER behind text/icons */
+  --cyan-focus:  #7FF0FF;   /* focus ring colour on blue backgrounds */
+
+  /* --- Gradient (DECORATIVE ONLY: glows, accent bars, button hover sheen) --- */
+  --gradient: linear-gradient(135deg, #0668FB 0%, #3FE5FA 100%);
+
+  /* --- Surfaces --- */
+  --canvas:     #EAF6FD;    /* light section background (pale cyan, not white/cream) */
+  --surface:    #FFFFFF;    /* cards on canvas */
+  --chip-light: #E1EEFF;    /* pale-blue icon-chip background on light sections */
+
+  /* --- Text --- */
+  --ink:            #0C1B33;  /* primary text on light — 15:1 AAA */
+  --ink-muted:      #45566E;  /* secondary text on light — 6.8:1 AA */
+  --on-blue:        #FFFFFF;  /* text on deep blue — 6.2:1 AA */
+  --on-blue-muted:  #D6E4FF;  /* muted text on deep blue — 5.0:1 AA */
+
+  /* --- Borders --- */
+  --hairline:       #D3E3F0;               /* 1px card/border on light */
+  --hairline-blue:  rgba(255,255,255,.16); /* divider on deep blue */
+  --border-blue-btn: rgba(255,255,255,.4); /* outline buttons on blue */
+
+  /* --- Stars (two-tone) --- */
+  --star:       #FFE204;   /* on blue */
+  --star-light: #FFD900;   /* on light */
+
+  /* --- Semantic --- */
+  --error:   #E5484D;
+  --success: #30A46C;
+
+  /* --- Forms (contact form, on light sections) --- */
+  --input-border:      #B9CFE0;              /* field border — darker than hairline so fields read as fields */
+  --input-placeholder: #6E8098;              /* placeholder text (decorative) */
+  --focus-ring-form:   rgba(15,98,255,.18);  /* soft outer ring on focused fields (plus blue border) */
+  --error-ring-form:   rgba(229,72,77,.15);
+  --radius-input:      12px;                 /* same radius family as buttons */
+  --notice-success-bg: #E7F6EE;              /* form success banner */
+  --notice-success-ink:#1B6B47;              /* 5.6:1 on its bg — AA */
+  --notice-error-bg:   #FDECEC;              /* form error banner */
+  --notice-error-ink:  #B3261E;              /* 6.2:1 on its bg — AA */
+
+  /* --- Shadows --- */
+  --shadow:            0 6px 24px rgba(11,84,224,.08);  /* soft blue lift on white cards */
+  --shadow-header:     0 4px 18px rgba(3,20,55,.22);    /* header, once scrolled */
+  --shadow-white-btn:  0 8px 22px rgba(3,20,55,.22);    /* white button on blue */
+  --shadow-white-btn-h:0 14px 30px rgba(3,20,55,.34);   /* white button on blue, hover */
+
+  /* --- Radius --- */
+  --radius-btn:    12px;
+  --radius-btn-lg: 14px;   /* hero CTAs */
+  --radius-card:   16px;
+  --radius-chip:   14px;   /* icon chip */
+  --radius-photo:  24px;   /* portrait frame */
+  --radius-pill:   999px;  /* rating badge, accent bars */
+
+  /* --- Spacing scale (8px base) --- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+  --space-section: 96px;               /* desktop section padding (styleguide uses 72px; site uses 96) */
+
+  /* --- Layout --- */
+  --max-width: 1100px;                 /* content container (styleguide). Brief allows up to 1200. */
+  --gutter-mobile: 20px;
+  --gutter-desktop: 40px;
+
+  /* --- Typography (Figtree) --- */
+  --font: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Figtree weights loaded: 400 / 500 / 600 / 700 */
+  --lh-body: 1.55;
+
+  /* Type scale — size / weight / line-height / letter-spacing.
+     Desktop values (mobile scales down; see DESIGN-SPEC.md §Typography). */
+  --t-display-xl: 700 60px/1.05 var(--font);   /* hero H1; letter-spacing -1.5px */
+  --t-display-lg: 700 42px/1.10 var(--font);   /* section H2;  letter-spacing -1px */
+  --t-headline:   700 24px/1.20 var(--font);   /* card-group / H3; letter-spacing -0.3px */
+  --t-card-title: 600 20px/1.25 var(--font);   /* card title; letter-spacing -0.2px */
+  --t-subhead:    400 19px/1.45 var(--font);   /* lead / intro (.lead) */
+  --t-body:       400 16px/1.55 var(--font);
+  --t-body-sm:    400 15px/1.50 var(--font);
+  --t-button:     600 16px/1.00 var(--font);
+  --t-eyebrow:    600 14px/1.30 var(--font);
+  --t-caption:    500 12px/1.40 var(--font);
+
+  /* --- Motion --- */
+  --dur:      .18s;   /* general transitions */
+  --dur-fast: .15s;
+  --ease:     ease;
+  --scroll-shadow-threshold: 6px;  /* header shadow appears after this scrollY */
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root{ --dur:0s; --dur-fast:0s; }
+}

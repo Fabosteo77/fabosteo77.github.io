@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/figtree';
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+interface Props {
+  locale: 'fr' | 'en';
+  title: string;
+  description: string;
+  /** Path of this page, e.g. "/" or "/en/". */
+  path: string;
+  /** Path of the same page in the other language (hreflang alternate). */
+  alternatePath?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  jsonLd?: object;
+}
+
+const { locale, title, description, path, alternatePath, ogImage, noindex, jsonLd } = Astro.props;
+
+const site = (import.meta.env.SITE ?? 'https://fabosteo77.github.io').replace(/\/$/, '');
+const canonical = site + path;
+const alternate = alternatePath !== undefined ? site + alternatePath : undefined;
+const otherLocale = locale === 'fr' ? 'en' : 'fr';
+const ogImageUrl = ogImage ? site + ogImage : undefined;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    {alternate && <link rel="alternate" hreflang={otherLocale} href={alternate} />}
+    {alternate && <link rel="alternate" hreflang={locale} href={canonical} />}
+    {alternate && <link rel="alternate" hreflang="x-default" href={locale === 'fr' ? canonical : alternate} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'fr' ? 'fr_FR' : 'en_GB'} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {locale === 'fr' ? 'Aller au contenu' : 'Skip to content'}
+    </a>
+    <slot />
+  </body>
+</html>
