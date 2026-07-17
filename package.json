@@ -1,0 +1,13 @@
+{
+  "name": "fabosteo-site",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "tina:dev": "tinacms dev -c \"astro dev\"",
+    "tina:build": "tinacms build --skip-cloud-checks --content=local -c \"astro build\""
+  }
+}

@@ -1,0 +1,20 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Secrets — never commit
+.env
+
+# Tina generated output (tina/tina-lock.json IS committed — do not ignore it)
+tina/__generated__/
+public/admin/
+
+# Old site archive (not part of the build)
+Fabien-website.zip
+
+# OS noise
+Thumbs.db
+.DS_Store

@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fabien Marié — design preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  /* Tokens live in tokens.css (canonical, shared with the build). Component styles below. */
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Figtree',system-ui,sans-serif;color:var(--ink);background:var(--canvas);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+  section{padding:72px 0}
+  .blue{background:var(--blue-deep);color:var(--on-blue)}
+  .blue h2,.blue h3{color:#fff}
+  .deep{background:var(--blue-900);color:var(--on-blue)}
+  .eyebrow{font-size:14px;font-weight:600;opacity:.9;margin-bottom:10px}
+  h1{font-size:60px;font-weight:700;line-height:1.05;letter-spacing:-1.5px}
+  h2{font-size:42px;font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:8px}
+  h3{font-size:22px;font-weight:700;letter-spacing:-.3px}
+  .lead{font-size:19px;font-weight:400}
+  .muted-light{color:var(--ink-muted)}
+  .muted-blue{color:var(--on-blue-muted)}
+  .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.g3{grid-template-columns:1fr}}
+
+  .btn{font-family:inherit;font-size:16px;font-weight:600;border:0;border-radius:12px;padding:13px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .18s ease;position:relative;overflow:hidden}
+  .btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .btn-lg{padding:16px 28px;border-radius:14px}
+  .btn-primary{background:var(--blue-deep);color:#fff}
+  .btn-primary::after{content:"";position:absolute;inset:0;background:var(--gradient);opacity:0;transition:opacity .2s ease}
+  .btn-primary:hover::after,.btn-primary.is-hover::after{opacity:.28}
+  .btn-primary *{position:relative;z-index:1}
+  .on-blue .btn-primary{background:#fff;color:var(--blue-deep);box-shadow:0 8px 22px rgba(3,20,55,.22)}
+  .on-blue .btn-primary::after{display:none}
+  .on-blue .btn-primary:hover,.on-blue .btn-primary.is-hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(3,20,55,.34)}
+  .btn-secondary:hover,.btn-secondary.is-hover{border-color:var(--blue);color:var(--blue)}
+  .on-blue .btn-secondary:hover,.on-blue .btn-secondary.is-hover{background:rgba(255,255,255,.12);border-color:#fff}
+  .btn-ghost:hover,.btn-ghost.is-hover{background:rgba(255,255,255,.12)}
+  /* focus: cyan ring on blue, blue ring on light — 3px, offset */
+  .btn:focus-visible,.btn.is-focus{outline:3px solid var(--blue);outline-offset:3px}
+  .on-blue .btn:focus-visible,.on-blue .btn.is-focus{outline:3px solid #7FF0FF;outline-offset:3px}
+  .btn-secondary{background:var(--surface);color:var(--blue-deep);border:1px solid var(--hairline)}
+  .on-blue .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+  .btn-ghost{background:transparent;color:inherit;border:1px solid rgba(255,255,255,.4)}
+
+  .sw{border-radius:12px;overflow:hidden;border:1px solid var(--hairline);background:#fff}
+  .sw .chip{height:74px}
+  .sw .meta{padding:10px 12px;font-size:13px}
+  .sw .meta b{font-weight:600;font-size:14px}
+  .sw .meta .hex{color:var(--ink-muted);font-variant-numeric:tabular-nums}
+  .swgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:820px){.swgrid{grid-template-columns:1fr 1fr}}
+
+  .card{background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .blue .card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);box-shadow:none;color:#fff}
+
+  /* subtle tinted icon chip — single-colour line icon, no gradient */
+  .chip-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:var(--chip-light);color:var(--blue-deep)}
+  .blue .chip-icon{background:rgba(255,255,255,.14);color:#fff}
+  .chip-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+  .divider{height:1px;background:var(--hairline);margin:14px 0}
+  .blue .divider{background:rgba(255,255,255,.16)}
+  ul.clean{list-style:none;font-size:15px}
+  ul.clean li{padding:5px 0 5px 22px;position:relative}
+  ul.clean li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+
+  .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px;font-size:14px}
+  .stars{color:var(--star-light);letter-spacing:3px;font-size:21px}
+  .blue .stars,.on-blue .stars{color:var(--star)}
+  .badge .stars{font-size:17px}
+
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
+  .photo-frame{position:relative}
+  .glow{position:absolute;inset:-6% -6% -6% -6%;background:var(--gradient);filter:blur(28px);opacity:.5;border-radius:40px;z-index:0}
+  .photo-frame img{position:relative;z-index:1;width:100%;border-radius:24px;display:block}
+
+  .type-row{display:flex;align-items:baseline;gap:18px;padding:12px 0;border-bottom:1px solid var(--hairline)}
+  .type-row .tag{font-size:12px;color:var(--ink-muted);width:120px;flex:none;font-variant-numeric:tabular-nums}
+
+  /* sticky header — always visible */
+  .site-header{position:sticky;top:0;z-index:50;background:var(--blue-deep);transition:box-shadow .2s ease}
+  .site-header.scrolled{box-shadow:0 4px 18px rgba(3,20,55,.22)}
+  .header-inner{display:flex;align-items:center;height:82px}
+  .brand{display:flex;align-items:center;flex:none;text-decoration:none;color:#fff}
+  .brand img{height:52px;width:auto;display:block}
+  .nav-links{flex:1;display:flex;justify-content:center;gap:38px}
+  .nav-links a{color:#fff;font-size:16px;font-weight:500;text-decoration:none;opacity:.9;transition:opacity .15s}
+  .nav-links a:hover{opacity:1}
+  .header-cta{flex:none;display:flex;align-items:center;gap:14px}
+  .header-contact{padding:11px 16px;font-size:15px;border:1px solid transparent}
+  .lang-switch{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15px;font-weight:500;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:12px;padding:11px 16px;cursor:pointer;transition:background .15s}
+  .lang-switch:hover{background:rgba(255,255,255,.12)}
+  .lang-switch svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+  @media(max-width:900px){.nav-links{display:none}}
+
+  /* --- Contact form --- */
+  .form-card{background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:28px;box-shadow:var(--shadow)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:15px;font-weight:600;color:var(--ink)}
+  .req{color:var(--blue-deep)}
+  .input{width:100%;font-family:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--input-border);border-radius:var(--radius-input);padding:13px 14px;transition:border-color .15s,box-shadow .15s}
+  .input::placeholder{color:var(--input-placeholder)}
+  .input:focus,.input.is-focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--focus-ring-form)}
+  .input.is-error{border-color:var(--error);box-shadow:0 0 0 3px var(--error-ring-form)}
+  .err-msg{font-size:13px;color:var(--error);font-weight:500}
+  textarea.input{min-height:120px;resize:vertical;line-height:1.5}
+  select.input{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230C1B33' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:42px;cursor:pointer}
+  .radio-row{display:flex;gap:22px}
+  .radio-row label{display:inline-flex;align-items:center;gap:9px;font-size:16px;font-weight:400;cursor:pointer}
+  .radio-row input{width:19px;height:19px;accent-color:var(--blue-deep);cursor:pointer}
+  .radio-row input:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:50%}
+  .notice{border-radius:var(--radius-input);padding:14px 16px;font-size:15px;font-weight:500;display:flex;align-items:flex-start;gap:10px}
+  .notice svg{width:19px;height:19px;flex:none;margin-top:1px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .notice-success{background:var(--notice-success-bg);color:var(--notice-success-ink);border:1px solid var(--success)}
+  .notice-error{background:var(--notice-error-bg);color:var(--notice-error-ink);border:1px solid var(--error)}
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
+  .social-chips{display:flex;gap:12px}
+  .social-chips .chip-icon{width:46px;height:46px;margin-bottom:0;border-radius:12px}
+  .social-chips .chip-icon svg{width:22px;height:22px}
+
+  .accent-bar{height:6px;background:var(--gradient);border-radius:999px}
+  .label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin:0 0 14px;font-weight:600}
+  .blue .label{color:var(--on-blue-muted)}
+</style>
+</head>
+<body>
+
+<header class="site-header on-blue">
+  <div class="wrap header-inner">
+    <a class="brand" href="#"><img src="/Images/logo.png" alt="Fabien Marié — Ostéopathe D.O" /></a>
+    <nav class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Patients</a>
+      <a href="#">Expertise</a>
+      <a href="#">Locations</a>
+    </nav>
+    <div class="header-cta">
+      <button class="btn btn-primary header-contact"><span>Contact</span></button>
+      <button class="lang-switch">Français <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<section class="blue on-blue">
+  <div class="wrap">
+    <div class="accent-bar" style="width:64px;margin-bottom:28px"></div>
+    <div class="hero-grid">
+      <div>
+        <div class="badge" style="margin-bottom:22px"><span class="stars">★★★★★</span><span>5 stars · 10 Google reviews</span></div>
+        <h1>Rediscover Your Movement, Discover Your Dynamism</h1>
+        <p class="lead muted-blue" style="margin:20px 0 30px;max-width:30ch">A gentle and personalized approach, suited for all ages.</p>
+        <div class="row">
+          <button class="btn btn-lg btn-primary"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Book an appointment</span></button>
+          <button class="btn btn-lg btn-ghost"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>06 98 69 48 59</button>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <div class="glow"></div>
+        <img src="/Images/Fabien-chat.png" alt="Fabien Marié" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Colour — deep blue carries text, gradient is decorative only</p>
+    <div class="swgrid">
+      <div class="sw"><div class="chip" style="background:#0B54E0"></div><div class="meta"><b>blue-deep</b><br><span class="hex">#0B54E0 · white 6.2:1 ✓</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0F62FF"></div><div class="meta"><b>blue</b><br><span class="hex">#0F62FF · accents / links</span></div></div>
+      <div class="sw"><div class="chip" style="background:#082E7A"></div><div class="meta"><b>blue-900</b><br><span class="hex">#082E7A · footer</span></div></div>
+      <div class="sw"><div class="chip" style="background:#3FE5FA"></div><div class="meta"><b>cyan</b><br><span class="hex">#3FE5FA · accent, no text</span></div></div>
+      <div class="sw"><div class="chip" style="background:#EAF6FD"></div><div class="meta"><b>canvas</b><br><span class="hex">#EAF6FD · light bg</span></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="meta"><b>surface</b><br><span class="hex">#FFFFFF · cards</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0C1B33"></div><div class="meta"><b>ink</b><br><span class="hex">#0C1B33 · text 15:1 ✓</span></div></div>
+      <div class="sw"><div class="chip" style="background:#45566E"></div><div class="meta"><b>ink-muted</b><br><span class="hex">#45566E · 6.8:1 ✓</span></div></div>
+    </div>
+    <div class="accent-bar" style="margin-top:24px"></div>
+    <p class="muted-light" style="font-size:14px;margin-top:10px">↑ The gradient (#0668FB → #3FE5FA) — bars, glows, button hovers. Never behind text or icons.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Typography — Figtree</p>
+    <div class="type-row"><span class="tag">display-xl 68</span><span style="font-size:44px;font-weight:700;letter-spacing:-1.2px">Rediscover your movement</span></div>
+    <div class="type-row"><span class="tag">display-lg 44</span><span style="font-size:34px;font-weight:700;letter-spacing:-.8px">Who do I help?</span></div>
+    <div class="type-row"><span class="tag">headline 24</span><span style="font-size:22px;font-weight:700">My areas of expertise</span></div>
+    <div class="type-row"><span class="tag">card-title 20</span><span style="font-size:20px;font-weight:600">Adults &amp; seniors</span></div>
+    <div class="type-row"><span class="tag">subhead 20</span><span style="font-size:19px;font-weight:400" class="muted-light">A gentle and personalized approach, suited for all ages.</span></div>
+    <div class="type-row"><span class="tag">body 16</span><span style="font-size:16px;font-weight:400">With nearly 20 years of practice, I master all osteopathic techniques.</span></div>
+    <div class="type-row"><span class="tag">button 16 · 600</span><span style="font-size:16px;font-weight:600">Book an appointment</span></div>
+  </div>
+</section>
+
+<section class="blue on-blue">
+  <div class="wrap">
+    <p class="eyebrow">On deep blue · line icons in soft chips</p>
+    <h2>Who do I help?</h2>
+    <p class="lead muted-blue" style="max-width:60ch;margin-bottom:34px">Specialized in functional disorders, I treat back pain and radiating pain like sciatica, but also a wide range of disorders for all ages, from 0 to 99 years old.</p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Adults &amp; Seniors</h3><div class="divider"></div>
+        <ul class="clean"><li>Joint and muscle pain</li><li>Neuralgia</li><li>Digestive disorders</li><li>Sleep disorders</li></ul>
+      </div>
+      <div class="card">
+        <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h3>Pregnant Women</h3><div class="divider"></div>
+        <ul class="clean"><li>Childbirth preparation</li><li>Pregnancy related pain</li></ul>
+      </div>
+      <div class="card">
+        <div class="chip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+        <h3>Infants &amp; Children</h3><div class="divider"></div>
+        <ul class="clean"><li>Digestive disorders</li><li>Developmental disorders</li><li>Unexplained crying</li><li>Postnatal follow-up</li></ul>
+      </div>
+    </div>
+    <div class="row" style="margin-top:30px"><button class="btn btn-primary"><span>Book an appointment</span></button><button class="btn btn-secondary">See the clinics</button></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">On light — cards, buttons, reviews</p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
+        <h3 style="color:var(--blue-deep)">Sports Osteopathy</h3>
+        <p class="muted-light" style="margin-top:10px;font-size:15px">Prevention and treatment of sports injuries to optimize performance and comfort during activity.</p>
+      </div>
+      <div class="card">
+        <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h3 style="color:var(--blue-deep)">Newborns</h3>
+        <p class="muted-light" style="margin-top:10px;font-size:15px">Treatment of functional disorders in infants to restore their mobility and comfort.</p>
+      </div>
+      <div class="card">
+        <div class="stars" style="margin-bottom:10px">★★★★★</div>
+        <p style="font-style:italic;font-size:16px">"A professional of great kindness, very human and attentive. You immediately feel at ease in his expert hands."</p>
+        <p class="muted-light" style="margin-top:14px;font-size:14px;font-weight:600">Maelys Boirie</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top:26px"><button class="btn btn-primary"><span>Book an appointment</span></button><button class="btn btn-secondary">See all Google reviews</button></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Button states — default · hover · focus (shown forced, so you don't have to hover)</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px">
+      <div class="on-blue" style="background:var(--blue-deep);border-radius:16px;padding:26px">
+        <p class="muted-blue" style="font-size:13px;margin-bottom:14px">On blue → white button, cyan focus ring</p>
+        <div class="row">
+          <button class="btn btn-primary"><span>Book</span></button>
+          <button class="btn btn-primary is-hover"><span>Book · hover</span></button>
+          <button class="btn btn-primary is-focus"><span>Book · focus</span></button>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <button class="btn btn-secondary">See clinics</button>
+          <button class="btn btn-secondary is-hover">See clinics · hover</button>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:26px">
+        <p class="muted-light" style="font-size:13px;margin-bottom:14px">On light → blue button (gradient sheen on hover), blue focus ring</p>
+        <div class="row">
+          <button class="btn btn-primary"><span>Book</span></button>
+          <button class="btn btn-primary is-hover"><span>Book · hover</span></button>
+          <button class="btn btn-primary is-focus"><span>Book · focus</span></button>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <button class="btn btn-secondary">Reviews</button>
+          <button class="btn btn-secondary is-hover">Reviews · hover</button>
+        </div>
+      </div>
+    </div>
+    <p class="muted-light" style="font-size:14px;margin-top:14px">Live hover/focus still work too — hover any button, or press Tab to walk the focus rings.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Contact form — on light, white card (shown in French, the primary language)</p>
+    <div class="contact-grid">
+      <div>
+        <h2>Me contacter</h2>
+        <p class="lead muted-light" style="margin:10px 0 26px">Une question ? N'hésitez pas à me contacter directement.</p>
+        <p style="font-size:15px;font-weight:600;margin-bottom:10px">Par téléphone</p>
+        <button class="btn btn-secondary" style="margin-bottom:26px"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>06 98 69 48 59</button>
+        <p style="font-size:15px;font-weight:600;margin-bottom:10px">Réseaux sociaux</p>
+        <div class="social-chips">
+          <span class="chip-icon" title="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></span>
+          <span class="chip-icon" title="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+          <span class="chip-icon" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+          <span class="chip-icon" title="YouTube"><svg viewBox="0 0 24 24"><path d="M22.5 6.4a3 3 0 0 0-2.1-2.1C18.5 3.8 12 3.8 12 3.8s-6.5 0-8.4.5A3 3 0 0 0 1.5 6.4 31 31 0 0 0 1 12a31 31 0 0 0 .5 5.6 3 3 0 0 0 2.1 2.1c1.9.5 8.4.5 8.4.5s6.5 0 8.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23 12a31 31 0 0 0-.5-5.6z"/><path d="m9.8 15.1 5.4-3.1-5.4-3.1z"/></svg></span>
+        </div>
+      </div>
+      <form class="form-card" onsubmit="return false">
+        <div class="form-grid">
+          <div class="field"><label for="f-prenom">Prénom <span class="req">*</span></label><input class="input" id="f-prenom" type="text" placeholder="Votre prénom" /></div>
+          <div class="field"><label for="f-nom">Nom <span class="req">*</span></label><input class="input" id="f-nom" type="text" placeholder="Votre nom" /></div>
+          <div class="field"><label for="f-email">Adresse email <span class="req">*</span></label><input class="input" id="f-email" type="email" placeholder="vous@exemple.fr" /></div>
+          <div class="field"><label for="f-tel">Numéro de téléphone</label><input class="input" id="f-tel" type="tel" placeholder="06 12 34 56 78" /></div>
+          <div class="field full"><label for="f-sujet">Sujet de votre demande <span class="req">*</span></label><input class="input" id="f-sujet" type="text" /></div>
+          <div class="field full"><label for="f-cab">Quel cabinet souhaitez-vous consulter ? <span class="req">*</span></label>
+            <select class="input" id="f-cab"><option>Talence</option><option>Mérignac</option><option>Bordeaux</option></select>
+          </div>
+          <div class="field full"><label>Comment vous recontacter ? <span class="req">*</span></label>
+            <div class="radio-row">
+              <label><input type="radio" name="pref" checked /> Email</label>
+              <label><input type="radio" name="pref" /> Téléphone</label>
+            </div>
+          </div>
+          <div class="field full"><label for="f-msg">Votre message <span class="req">*</span></label><textarea class="input" id="f-msg" placeholder="Laissez vos coordonnées et un court message."></textarea></div>
+        </div>
+        <button class="btn btn-lg btn-primary" style="margin-top:20px"><span>Envoyer</span><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button>
+      </form>
+    </div>
+
+    <p class="label" style="margin-top:44px">Field states &amp; messages — focus · error · success / failure banners (shown forced)</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px">
+      <div class="form-card">
+        <div class="field" style="margin-bottom:16px"><label>Champ au focus (bordure bleue + halo)</label><input class="input is-focus" type="text" value="Fabien" /></div>
+        <div class="field"><label>Champ en erreur</label><input class="input is-error" type="email" value="fabien@" /><span class="err-msg">Veuillez saisir une adresse email valide.</span></div>
+      </div>
+      <div class="form-card" style="display:flex;flex-direction:column;gap:14px;justify-content:center">
+        <div class="notice notice-success"><svg viewBox="0 0 24 24"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m9 11 3 3L22 4"/></svg><span>Merci&nbsp;! Votre message a bien été envoyé. Je vous répondrai au plus vite.</span></div>
+        <div class="notice notice-error"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span>Désolé, l'envoi a échoué. Réessayez dans un instant ou appelez-moi directement au 06&nbsp;98&nbsp;69&nbsp;48&nbsp;59.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="deep on-blue">
+  <div class="wrap" style="text-align:center">
+    <div class="accent-bar" style="width:56px;margin:0 auto 22px"></div>
+    <h3 style="font-weight:700">Fabien Marié — Ostéopathe D.O</h3>
+    <p class="muted-blue" style="margin-top:8px">Footer base tone (blue-900). FR / EN switch, socials, nav and contact live here.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var h=document.querySelector('.site-header');
+  function upd(){ h.classList.toggle('scrolled', window.scrollY > 6); }
+  upd(); window.addEventListener('scroll', upd, {passive:true});
+})();
+</script>
+</body>
+</html>
