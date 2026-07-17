@@ -1,6 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import logo from '../assets/images/logo.png';
+import mark from '../assets/images/logo-mark-white.png';
 
 interface Props {
   header: {
@@ -19,7 +20,11 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
 <header class="site-header on-blue">
   <div class="wrap header-inner">
     <a class="brand" href={locale === 'fr' ? '/' : '/en/'}>
-      <img src={logo.src} width={logo.width} height={logo.height} alt="Fabien Marié — Ostéopathe D.O" />
+      <Image src={mark} alt="" widths={[56, 112]} sizes="56px" loading="eager" />
+      <span class="brand-text">
+        <span class="brand-name">Fabien Marié</span>
+        <span class="brand-sub">Ostéopathe D.O</span>
+      </span>
     </a>
     <nav class="nav-links" aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}>
       {links.map((l) => <a href={l!.href}>{l!.label}</a>)}
@@ -50,8 +55,11 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
   }
   .site-header.scrolled { box-shadow: var(--shadow-header); }
   .header-inner { display: flex; align-items: center; height: 82px; }
-  .brand { display: flex; align-items: center; flex: none; text-decoration: none; }
-  .brand img { height: 52px; width: auto; display: block; }
+  .brand { display: flex; align-items: center; gap: 12px; flex: none; text-decoration: none; color: #fff; }
+  .brand img { height: 56px; width: 56px; display: block; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-name { font-size: 18px; font-weight: 700; letter-spacing: -0.2px; }
+  .brand-sub { font-size: 12.5px; font-weight: 500; color: var(--on-blue-muted); letter-spacing: .02em; }
   .nav-links { flex: 1; display: flex; justify-content: center; gap: 38px; }
   .nav-links a { color: #fff; font-size: 16px; font-weight: 500; text-decoration: none; opacity: .9; transition: opacity var(--dur-fast); }
   .nav-links a:hover { opacity: 1; }

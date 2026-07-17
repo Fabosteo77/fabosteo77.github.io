@@ -1,6 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import logo from '../assets/images/logo.png';
+import mark from '../assets/images/logo-mark-white.png';
 
 interface Props {
   footer: {
@@ -32,7 +33,11 @@ const year = new Date().getFullYear();
   <div class="accent-bar" aria-hidden="true"></div>
   <div class="wrap footer-grid">
     <div class="brand-col">
-      <img src={logo.src} width={logo.width} height={logo.height} alt="Fabien Marié — Ostéopathe D.O" />
+      <Image src={mark} alt="" widths={[52, 104]} sizes="52px" />
+      <span class="brand-text">
+        <span class="brand-name">Fabien Marié</span>
+        <span class="brand-sub">Ostéopathe D.O</span>
+      </span>
     </div>
     <nav aria-label={footer.navLabel ?? 'Navigation'}>
       <p class="col-title">{footer.navLabel}</p>
@@ -69,7 +74,11 @@ const year = new Date().getFullYear();
     display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
     gap: 32px; padding-top: 56px; padding-bottom: 40px;
   }
-  .brand-col img { height: 56px; width: auto; }
+  .brand-col { display: flex; align-items: center; gap: 12px; }
+  .brand-col img { height: 52px; width: 52px; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-name { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -0.2px; }
+  .brand-sub { font-size: 12.5px; font-weight: 500; color: var(--on-blue-muted); letter-spacing: .02em; }
   .col-title { font-size: 14px; font-weight: 600; color: var(--on-blue-muted); margin-bottom: 12px; }
   ul { list-style: none; }
   li { padding: 4px 0; }

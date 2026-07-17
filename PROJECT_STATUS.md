@@ -50,9 +50,16 @@ GitHub Secrets; **`tina/tina-lock.json` IS committed**. See `instructions.md` §
 - **Phase 2 (build plan):** ✅ **APPROVED 2026-07-17** — see `BUILD-PLAN.md`. Owner reviewed the
   styleguide first and asked for the contact form to be added to it; done and approved (see
   `DESIGN-SPEC.md` §7b + "Forms" tokens in `design/tokens.css`), then approved the build.
-- **Phase 3+ (scaffold, build):** ⏳ **in progress since 2026-07-17** (owner said "construis le site").
-  Build locally first; deploy only after the page-by-page review (gate 3). Tina Cloud account +
-  GitHub repo (`fabosteo77.github.io`) are created at deploy time.
+- **Phase 3 (scaffold) + Phase 4 (build):** ✅ **DONE 2026-07-17.** Astro 7 + Tina 3 project in this
+  folder; git repo initialised (local only). All pages build (`npm run tina:build`) and were verified
+  locally: FR `/`, EN `/en/`, legal ×2, 404, `/styleguide` (matches approved tokens), mobile OK,
+  hamburger OK, no console errors. `tina/tina-lock.json` committed. Local `.env` uses placeholder
+  Tina credentials until the Tina Cloud project exists (build runs `--content=local`).
+  Dev server: `.claude/launch.json` → "site" (`npm run tina:dev`, port 4321).
+- **Gate 3 (owner review of the built site):** ⏳ awaiting the owner's page-by-page review.
+- **Phase 5 (deploy):** not started — needs owner: create Tina Cloud account (app.tina.io), then
+  create public repo `fabosteo77.github.io`, push, set Pages source = Actions, secret `TINA_TOKEN`,
+  variable `TINA_PUBLIC_CLIENT_ID`, first Formsubmit confirmation click. Workflow file is ready.
 
 ## 4. File inventory (what's in the folder)
 
