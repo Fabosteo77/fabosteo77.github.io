@@ -19,8 +19,9 @@ interface Props {
 const { contact, settings, clinicNames } = Astro.props;
 const form = contact.form ?? {};
 const phoneHref = 'tel:+33' + settings.phone.replace(/\s/g, '').replace(/^0/, '');
+const SOCIAL_NAMES = ['instagram', 'tiktok', 'facebook', 'linkedin', 'youtube'];
 const socialEntries = Object.entries(settings.socials ?? {}).filter(
-  ([, url]) => typeof url === 'string' && url.trim() !== ''
+  ([name, url]) => SOCIAL_NAMES.includes(name) && typeof url === 'string' && url.trim() !== ''
 ) as [string, string][];
 const action = `https://formsubmit.co/${settings.formRecipient}`;
 const ajax = `https://formsubmit.co/ajax/${settings.formRecipient}`;

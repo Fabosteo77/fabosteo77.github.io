@@ -19,8 +19,9 @@ interface Props {
 }
 const { footer, header, settings, locale } = Astro.props;
 const links = (header.links ?? []).filter((l) => l?.label && l?.href);
+const SOCIAL_NAMES = ['instagram', 'tiktok', 'facebook', 'linkedin', 'youtube'];
 const socialEntries = Object.entries(settings.socials ?? {}).filter(
-  ([, url]) => typeof url === 'string' && url.trim() !== ''
+  ([name, url]) => SOCIAL_NAMES.includes(name) && typeof url === 'string' && url.trim() !== ''
 ) as [string, string][];
 const phoneHref = 'tel:+33' + settings.phone.replace(/\s/g, '').replace(/^0/, '');
 const legalHref = locale === 'fr' ? '/mentions-legales/' : '/en/legal/';
