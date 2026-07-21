@@ -16,6 +16,7 @@ const cards = (expertise.cards ?? []).filter(Boolean);
 
 <section id={id}>
   <div class="wrap">
+    <div class="section-bar" aria-hidden="true"></div>
     <h2 class="heading">{expertise.heading}</h2>
     <div class="grid g2">
       {cards.map((card) => {

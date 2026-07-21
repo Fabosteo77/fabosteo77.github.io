@@ -19,6 +19,7 @@ interface Props {
 const { hero, phone, bookHref } = Astro.props;
 const photo = resolveImage(hero.photo);
 const phoneHref = 'tel:+33' + phone.replace(/\s/g, '').replace(/^0/, '');
+const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
 <section class="hero bg-blue on-blue" id="top">
@@ -35,7 +36,7 @@ const phoneHref = 'tel:+33' + phone.replace(/\s/g, '').replace(/^0/, '');
         <h1>{hero.heading}</h1>
         {hero.subheading && <p class="lead muted subhead">{hero.subheading}</p>}
         <div class="row">
-          <a class="btn btn-lg btn-primary" href={bookHref}>
+          <a class="btn btn-lg btn-primary" href={bookHref} {...bookExt}>
             <Icon name="calendar" />
             <span>{hero.ctaLabel}</span>
           </a>
@@ -64,7 +65,8 @@ const phoneHref = 'tel:+33' + phone.replace(/\s/g, '').replace(/^0/, '');
 
 <style>
   /* The portrait bleeds over the top padding of the About section (design example). */
-  .hero { padding-bottom: 0; overflow: visible; }
+  /* Charte: gradient background — text stays on the deep-blue side, cyan behind the portrait. */
+  .hero { padding-bottom: 0; overflow: visible; background: var(--gradient-hero); }
   .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
   .hero-grid > div:first-child { padding-bottom: var(--space-section); }
   .badge { margin-bottom: 22px; }

@@ -16,11 +16,14 @@
 
   /* --- Gradient (DECORATIVE ONLY: glows, accent bars, button hover sheen) --- */
   --gradient: linear-gradient(135deg, #0668FB 0%, #3FE5FA 100%);
+  /* Hero background (charte pancarte): text sits on the deep-blue side (AA kept),
+     the cyan end lives behind the portrait only. */
+  --gradient-hero: linear-gradient(105deg, var(--blue-deep) 45%, #0668FB 68%, #17B9EE 92%, var(--cyan) 112%);
 
   /* --- Surfaces --- */
   --canvas:     #EAF6FD;    /* light section background (pale cyan, not white/cream) */
   --surface:    #FFFFFF;    /* cards on canvas */
-  --chip-light: #E1EEFF;    /* pale-blue icon-chip background on light sections */
+  --chip-light: #DBF5FA;    /* pale-cyan icon-chip background on light sections (charte: cyan présent) */
 
   /* --- Text --- */
   --ink:            #0C1B33;  /* primary text on light — 15:1 AAA */
@@ -30,7 +33,7 @@
 
   /* --- Borders --- */
   --hairline:       #D3E3F0;               /* 1px card/border on light */
-  --hairline-blue:  rgba(255,255,255,.16); /* divider on deep blue */
+  --hairline-blue:  rgba(63,229,250,.32);  /* divider on deep blue — cyan-tinted (charte) */
   --border-blue-btn: rgba(255,255,255,.4); /* outline buttons on blue */
 
   /* --- Stars (two-tone) --- */

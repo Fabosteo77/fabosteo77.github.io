@@ -20,10 +20,12 @@ const payment = (clinics.payment ?? []).filter(Boolean);
 const mapsFor = (name?: string | null) =>
   (clinicLinks ?? []).find((c) => c?.name === name)?.mapsUrl?.trim() || undefined;
 const directionsLabel = locale === 'fr' ? 'Itinéraire' : 'Directions';
+const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
 <section class="bg-blue on-blue" id={id}>
   <div class="wrap">
+    <div class="section-bar" aria-hidden="true"></div>
     <h2>{clinics.heading}</h2>
     {clinics.subheading && <p class="lead muted intro">{clinics.subheading}</p>}
     <div class="grid g3">
@@ -37,7 +39,7 @@ const directionsLabel = locale === 'fr' ? 'Itinéraire' : 'Directions';
             {clinic!.hours && <p class="line"><Icon name="clock" /><span>{clinic!.hours}</span></p>}
             {clinic!.note && <p class="line note muted"><span>{clinic!.note}</span></p>}
             <div class="clinic-ctas row">
-              <a class="btn btn-primary" href={bookHref}><span>{clinics.bookCtaLabel}</span></a>
+              <a class="btn btn-primary" href={bookHref} {...bookExt}><span>{clinics.bookCtaLabel}</span></a>
               {maps && <a class="btn btn-secondary" href={maps} target="_blank" rel="noopener">{directionsLabel}</a>}
             </div>
           </div>

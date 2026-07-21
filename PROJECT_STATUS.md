@@ -234,6 +234,12 @@ machine — they will differ.** Listed so you know a working setup looked like t
 - Gate 1 (design) approved 2026-07-16.
 - 2026-07-17: Phase 0 passed on the owner's machine. GitHub account = **Fabosteo77**, repo will be
   **public**, contact-form email = **contact@fabosteo.fr** (replaces the content.md placeholder).
+- 2026-07-21: owner confirmed the site phone **06 98 69 48 59** is correct (the pancarte's
+  06.87.65.45.23 is a different/old number — do NOT copy it to the site). Google reviews: 19 total
+  across the 3 clinics; hero badge says 19; "see reviews" buttons link to the Talence fiche
+  (maps.google.com/?cid=7303564961164684581). Cyan pass applied to match the charte graphique
+  (gradient hero, header underline, cyan chips/dividers, section bars); logo mark switched to the
+  colour gradient version in header/footer — pending owner's final look-check.
 
 ## Open questions (for the build phases)
 - ~~Contact-form recipient email~~ → **decided: contact@fabosteo.fr** (2026-07-17).

@@ -117,6 +117,7 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: 12px; width
 .badge .stars { font-size: 17px; }
 
 .accent-bar { height: 6px; background: var(--gradient); border-radius: var(--radius-pill); }
+.section-bar { width: 56px; height: 5px; background: var(--gradient); border-radius: var(--radius-pill); margin-bottom: 18px; }
 .eyebrow { font: var(--t-eyebrow); opacity: .9; margin-bottom: 10px; }
 
 .grid { display: grid; gap: 20px; }

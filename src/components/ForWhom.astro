@@ -17,10 +17,12 @@ interface Props {
 }
 const { id, forWhom, bookHref, clinicsAnchor } = Astro.props;
 const cards = (forWhom.cards ?? []).filter(Boolean);
+const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
 <section class="bg-blue on-blue" id={id}>
   <div class="wrap">
+    <div class="section-bar" aria-hidden="true"></div>
     <h2>{forWhom.heading}</h2>
     {forWhom.subheading && <p class="lead muted intro">{forWhom.subheading}</p>}
     {forWhom.intro && <p class="muted intro-2">{forWhom.intro}</p>}
@@ -39,7 +41,7 @@ const cards = (forWhom.cards ?? []).filter(Boolean);
     {forWhom.footnote && <p class="footnote muted">{forWhom.footnote}</p>}
     <div class="row ctas">
       {forWhom.bookCtaLabel && (
-        <a class="btn btn-primary" href={bookHref}><span>{forWhom.bookCtaLabel}</span></a>
+        <a class="btn btn-primary" href={bookHref} {...bookExt}><span>{forWhom.bookCtaLabel}</span></a>
       )}
       {forWhom.clinicsCtaLabel && (
         <a class="btn btn-secondary" href={clinicsAnchor}>{forWhom.clinicsCtaLabel}</a>
