@@ -11,6 +11,7 @@ import Clinics from './Clinics.astro';
 import Contact from './Contact.astro';
 import Footer from './Footer.astro';
 import CookieBanner from './CookieBanner.astro';
+import SectionWave from './SectionWave.astro';
 import { getPage, getSettings, bookHref } from '../lib/cms';
 
 interface Props {
@@ -65,14 +66,17 @@ const jsonLd = {
       googleReviewsUrl={settings.googleReviewsUrl}
       reviewsAnchor={'#' + anchors.reviews}
     />
+    <SectionWave from="var(--canvas)" to="var(--blue-deep)" />
     <ForWhom
       id={anchors.forWhom}
       forWhom={page.forWhom ?? {}}
       bookHref={book}
       clinicsAnchor={'#' + anchors.clinics}
     />
+    <SectionWave from="var(--blue-deep)" to="var(--canvas)" flip />
     <Expertise id="expertise" expertise={page.expertise ?? {}} />
     <Reviews id={anchors.reviews} reviews={page.reviews ?? {}} googleReviewsUrl={settings.googleReviewsUrl} />
+    <SectionWave from="var(--canvas)" to="var(--blue-deep)" flip />
     <Clinics
       id={anchors.clinics}
       clinics={page.clinics ?? {}}
@@ -80,11 +84,13 @@ const jsonLd = {
       bookHref={book}
       locale={locale}
     />
+    <SectionWave from="var(--blue-deep)" to="var(--canvas)" />
     <Contact
       contact={page.contact ?? {}}
       settings={settings}
       clinicNames={(page.clinics?.items ?? []).filter(Boolean).map((c) => c!.name ?? '')}
     />
+    <SectionWave from="var(--canvas)" to="var(--blue-900)" flip />
   </main>
   <Footer footer={page.footer ?? {}} header={page.header ?? {}} settings={settings} locale={locale} />
   <CookieBanner cookie={page.cookie ?? {}} />

@@ -22,7 +22,13 @@
     "subheading": "A gentle and personalized approach, suited for all ages.",
     "ctaLabel": "Book an Appointment",
     "photo": "/images/fabien-portrait.png",
-    "photoAlt": "Fabien Marié, osteopath D.O"
+    "photoAlt": "Fabien Marié, osteopath D.O",
+    "stats": [
+      { "value": "20 yrs", "label": "of experience" },
+      { "value": "3", "label": "clinics in Gironde" },
+      { "value": "19 reviews", "label": "5 stars on Google" },
+      { "value": "FR · EN", "label": "bilingual consultations" }
+    ]
   },
   "about": {
     "heading": "About Fabien Marié",

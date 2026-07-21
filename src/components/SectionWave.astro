@@ -1,0 +1,23 @@
+---
+// Soft wave divider between two sections (charte: echoes the logo's circular arcs).
+// `from` = colour of the section above (band background), `to` = colour of the section below.
+interface Props {
+  from: string;
+  to: string;
+  flip?: boolean;
+}
+const { from, to, flip = false } = Astro.props;
+---
+
+<div class="section-wave" style={`background:${from}`} aria-hidden="true">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none" class:list={[{ flip }]}>
+    <path d="M0,34 C240,58 480,10 720,26 C960,42 1200,18 1440,38 L1440,64 L0,64 Z" style={`fill:${to}`} />
+  </svg>
+</div>
+
+<style>
+  .section-wave { line-height: 0; }
+  .section-wave svg { display: block; width: 100%; height: 56px; }
+  .section-wave svg.flip { transform: scaleX(-1); }
+  @media (max-width: 768px) { .section-wave svg { height: 36px; } }
+</style>

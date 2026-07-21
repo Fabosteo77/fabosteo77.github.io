@@ -51,11 +51,46 @@ const ogImageUrl = ogImage ? site + ogImage : undefined;
     <meta name="twitter:description" content={description} />
     {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <script is:inline>
+      if ('IntersectionObserver' in window) document.documentElement.classList.add('js');
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">
       {locale === 'fr' ? 'Aller au contenu' : 'Skip to content'}
     </a>
     <slot />
+    <script>
+      // Scroll-reveal: fade & rise sections and cards as they enter the viewport.
+      if (document.documentElement.classList.contains('js')) {
+        const singles = document.querySelectorAll(
+          'main section:not(#top) .wrap > h2, main section:not(#top) .wrap > .section-bar, ' +
+          'main section:not(#top) .wrap > p, main section:not(#top) .wrap > .row'
+        );
+        const groups = document.querySelectorAll('.grid, .about-grid, .contact-grid');
+        const targets: Element[] = [...singles];
+        groups.forEach((group) => {
+          [...group.children].forEach((child, i) => {
+            (child as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(i * 90, 360)}ms`);
+            targets.push(child);
+          });
+        });
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        targets.forEach((el) => {
+          el.classList.add('reveal');
+          io.observe(el);
+        });
+      }
+    </script>
   </body>
 </html>

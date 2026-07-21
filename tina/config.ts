@@ -138,6 +138,17 @@ export default defineConfig({
               { type: 'string', name: 'ctaLabel', label: 'Bouton principal (Prendre rendez-vous)' },
               { type: 'image', name: 'photo', label: 'Photo (portrait)' },
               { type: 'string', name: 'photoAlt', label: 'Description de la photo (accessibilité)' },
+              {
+                type: 'object',
+                name: 'stats',
+                label: 'Chiffres clés (sous les boutons)',
+                list: true,
+                ui: { itemProps: (item: Record<string, unknown>) => ({ label: `${item?.value ?? ''} ${item?.label ?? ''}` }) },
+                fields: [
+                  { type: 'string', name: 'value', label: 'Chiffre (ex. 20 ans)' },
+                  { type: 'string', name: 'label', label: 'Libellé (ex. d’expérience)' },
+                ],
+              },
             ],
           },
           {

@@ -22,7 +22,13 @@
     "subheading": "Une approche douce et personnalisée, adaptée pour tous les âges.",
     "ctaLabel": "Prendre rendez-vous",
     "photo": "/images/fabien-portrait.png",
-    "photoAlt": "Fabien Marié, ostéopathe D.O"
+    "photoAlt": "Fabien Marié, ostéopathe D.O",
+    "stats": [
+      { "value": "20 ans", "label": "d'expérience" },
+      { "value": "3", "label": "cabinets en Gironde" },
+      { "value": "19 avis", "label": "5 étoiles sur Google" },
+      { "value": "FR · EN", "label": "consultations bilingues" }
+    ]
   },
   "about": {
     "heading": "À propos de Fabien Marié",

@@ -161,6 +161,20 @@ select.input {
 .notice-success { background: var(--notice-success-bg); color: var(--notice-success-ink); border: 1px solid var(--success); }
 .notice-error { background: var(--notice-error-bg); color: var(--notice-error-ink); border: 1px solid var(--error); }
 
+/* ---------------------------------------------- Scroll-reveal (fade & rise) */
+/* Only active when JS + IntersectionObserver exist (html.js) — no-JS visitors
+   and reduced-motion users always see everything immediately. */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s var(--ease), transform .55s var(--ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+html.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 /* Motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0s !important; animation: none !important; }

@@ -11,6 +11,7 @@ interface Props {
     ctaLabel?: string | null;
     photo?: string | null;
     photoAlt?: string | null;
+    stats?: ({ value?: string | null; label?: string | null } | null)[] | null;
   };
   phone: string;
   bookHref: string;
@@ -20,6 +21,7 @@ const { hero, phone, bookHref } = Astro.props;
 const photo = resolveImage(hero.photo);
 const phoneHref = 'tel:+33' + phone.replace(/\s/g, '').replace(/^0/, '');
 const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+const stats = (hero.stats ?? []).filter((s) => s?.value);
 ---
 
 <section class="hero bg-blue on-blue" id="top">
@@ -45,6 +47,16 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
             {phone}
           </a>
         </div>
+        {stats.length > 0 && (
+          <dl class="stats">
+            {stats.map((s) => (
+              <div class="stat">
+                <dt>{s!.value}</dt>
+                <dd>{s!.label}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
       <div class="photo-frame">
         <div class="glow" aria-hidden="true"></div>
@@ -61,6 +73,11 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
       </div>
     </div>
   </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+      <path d="M0,34 C240,58 480,10 720,26 C960,42 1200,18 1440,38 L1440,64 L0,64 Z" style="fill:var(--canvas)" />
+    </svg>
+  </div>
 </section>
 
 <style>
@@ -75,6 +92,20 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
   .hero-grid > div:first-child { padding-bottom: var(--space-section); }
   .badge { margin-bottom: 22px; }
   .subhead { margin: 20px 0 30px; max-width: 30ch; }
+  .stats { display: flex; flex-wrap: wrap; gap: 14px 0; margin-top: 38px; }
+  .stat { padding: 2px 26px; border-left: 1px solid var(--hairline-blue); }
+  .stat:first-child { padding-left: 0; border-left: 0; }
+  .stat dt { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+  .stat dd { font-size: 13px; font-weight: 500; color: var(--on-blue-muted); margin: 2px 0 0; }
+  @media (max-width: 480px) {
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+    .stat { padding: 0; border-left: 0; }
+  }
+
+  .hero-wave { line-height: 0; position: relative; z-index: 1; }
+  .hero-wave svg { display: block; width: 100%; height: 56px; }
+  @media (max-width: 768px) { .hero-wave svg { height: 36px; } }
+
   .photo-frame { position: relative; margin-bottom: -80px; z-index: 2; align-self: end; }
   .glow { position: absolute; inset: -6%; background: var(--gradient); filter: blur(28px); opacity: .5; border-radius: 40px; z-index: 0; }
   .photo-frame img { position: relative; z-index: 1; width: 100%; height: auto; border-radius: var(--radius-photo); display: block; }
