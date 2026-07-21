@@ -41,9 +41,6 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
       </button>
     </div>
   </div>
-  <div class="wrap">
-    <div class="header-rule" aria-hidden="true"></div>
-  </div>
   <nav class="mobile-nav" id="mobile-nav" aria-label={locale === 'fr' ? 'Navigation mobile' : 'Mobile navigation'} hidden>
     {links.map((l) => <a href={l!.href}>{l!.label}</a>)}
     <a href="#contact">{header.contactLabel}</a>
@@ -77,9 +74,6 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
   }
   .lang-switch:hover { background: rgba(255,255,255,.12); }
   .lang-switch :global(svg) { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-
-  /* Ligne de démarcation en-tête/héros — du logo au bouton de langue (largeur du contenu) */
-  .header-rule { height: 8px; background: var(--gradient); border-radius: var(--radius-pill); }
 
   .menu-toggle {
     display: none; background: transparent; border: 1px solid var(--border-blue-btn);

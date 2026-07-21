@@ -24,7 +24,7 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
 
 <section class="hero bg-blue on-blue" id="top">
   <div class="wrap">
-    <div class="accent-bar" style="width:64px;margin-bottom:28px"></div>
+    <div class="hero-rule" aria-hidden="true"></div>
     <div class="hero-grid">
       <div>
         {hero.badge && (
@@ -66,7 +66,11 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
 <style>
   /* The portrait bleeds over the top padding of the About section (design example). */
   /* Charte: gradient background — text stays on the deep-blue side, cyan behind the portrait. */
-  .hero { padding-bottom: 0; overflow: visible; background: var(--gradient-hero); }
+  .hero { padding-top: 0; padding-bottom: 0; overflow: visible; background: var(--gradient-hero); }
+  /* Ligne de démarcation, dans la page (non collante) : bord supérieur collé à la frontière
+     en-tête/héros, du bord du logo au bord du bouton de langue (largeur du contenu). */
+  .hero-rule { height: 8px; background: var(--cyan); border-radius: var(--radius-pill); margin: 0 0 88px; }
+  @media (max-width: 768px) { .hero-rule { margin: 0 0 52px; } }
   .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
   .hero-grid > div:first-child { padding-bottom: var(--space-section); }
   .badge { margin-bottom: 22px; }
