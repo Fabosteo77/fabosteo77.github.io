@@ -12,6 +12,7 @@ import Contact from './Contact.astro';
 import Footer from './Footer.astro';
 import CookieBanner from './CookieBanner.astro';
 import SectionWave from './SectionWave.astro';
+import MobileActionBar from './MobileActionBar.astro';
 import { getPage, getSettings, bookHref } from '../lib/cms';
 
 interface Props {
@@ -94,4 +95,10 @@ const jsonLd = {
   </main>
   <Footer footer={page.footer ?? {}} header={page.header ?? {}} settings={settings} locale={locale} />
   <CookieBanner cookie={page.cookie ?? {}} />
+  <MobileActionBar
+    phone={settings.phone}
+    bookHref={book}
+    callLabel={locale === 'fr' ? 'Appeler' : 'Call'}
+    bookLabel={locale === 'fr' ? 'Prendre RDV' : 'Book'}
+  />
 </Base>

@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  phone: string;
+  bookHref: string;
+  callLabel: string;
+  bookLabel: string;
+}
+const { phone, bookHref, callLabel, bookLabel } = Astro.props;
+const phoneHref = 'tel:+33' + phone.replace(/\s/g, '').replace(/^0/, '');
+const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+---
+
+<nav class="action-bar" aria-label={callLabel + ' / ' + bookLabel}>
+  <a class="ab-btn ab-call" href={phoneHref}>
+    <Icon name="phone" />
+    <span>{callLabel}</span>
+  </a>
+  <a class="ab-btn ab-book" href={bookHref} {...bookExt}>
+    <Icon name="calendar" />
+    <span>{bookLabel}</span>
+  </a>
+</nav>
+
+<style>
+  .action-bar {
+    display: none;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 85;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    gap: 10px;
+    background: rgba(255, 255, 255, .96);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--hairline);
+    box-shadow: 0 -6px 20px rgba(3, 20, 55, .12);
+  }
+  .ab-btn {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--font); font-size: 16px; font-weight: 600; text-decoration: none;
+    padding: 13px 10px; border-radius: var(--radius-btn); min-height: 48px;
+  }
+  .ab-btn :global(svg) { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .ab-call { background: var(--surface); color: var(--blue-deep); border: 1px solid var(--hairline); }
+  .ab-book { background: var(--blue-deep); color: #fff; }
+  .ab-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  @media (max-width: 700px) { .action-bar { display: flex; } }
+</style>

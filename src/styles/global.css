@@ -89,8 +89,12 @@ a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-ra
 .card {
   background: var(--surface); border: 1px solid var(--hairline);
   border-radius: var(--radius-card); padding: 24px; box-shadow: var(--shadow);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
 }
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(11,84,224,.16); border-color: var(--cyan); }
 .bg-blue .card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); box-shadow: none; color: #fff; }
+.bg-blue .card:hover { transform: translateY(-4px); background: rgba(255,255,255,.13); border-color: rgba(63,229,250,.55); box-shadow: 0 16px 36px rgba(3,20,55,.28); }
+@media (prefers-reduced-motion: reduce) { .card:hover, .bg-blue .card:hover { transform: none; } }
 
 .chip-icon {
   width: 52px; height: 52px; border-radius: var(--radius-chip);
@@ -161,18 +165,15 @@ select.input {
 .notice-success { background: var(--notice-success-bg); color: var(--notice-success-ink); border: 1px solid var(--success); }
 .notice-error { background: var(--notice-error-bg); color: var(--notice-error-ink); border: 1px solid var(--error); }
 
-/* ---------------------------------------------- Scroll-reveal (fade & rise) */
-/* Only active when JS + IntersectionObserver exist (html.js) — no-JS visitors
-   and reduced-motion users always see everything immediately. */
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .55s var(--ease), transform .55s var(--ease);
-  transition-delay: var(--reveal-delay, 0s);
-}
-html.js .reveal.is-visible { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  html.js .reveal { opacity: 1; transform: none; transition: none; }
+/* Scroll-reveal (fade & rise) is driven entirely from JS with inline styles —
+   see the reveal script in Base.astro. Nothing here on purpose: visitors without
+   JS (or with reduced motion) simply see the content, never a hidden page. */
+
+/* Fixed mobile action bar: reserve space so it never covers content, and lift the
+   cookie banner above it while both are visible. */
+@media (max-width: 700px) {
+  body:has(.action-bar) { padding-bottom: 76px; }
+  body:has(.action-bar) .cookie-banner { bottom: 84px; }
 }
 
 /* Motion preference */
