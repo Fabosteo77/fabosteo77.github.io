@@ -89,11 +89,13 @@ const stats = (hero.stats ?? []).filter((s) => s?.value);
   .hero-rule { height: 8px; background: var(--cyan); border-radius: var(--radius-pill); margin: 0 0 88px; }
   @media (max-width: 768px) { .hero-rule { margin: 0 0 52px; } }
   .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
-  /* Texte centré verticalement face à la photo, sans jamais dépasser au-dessus d'elle */
-  .hero-grid > div:first-child { align-self: center; }
+  /* Texte centré verticalement face à la photo, sans jamais dépasser au-dessus d'elle,
+     et aligné au centre horizontalement */
+  .hero-grid > div:first-child { align-self: center; text-align: center; }
   .badge { margin-bottom: 22px; }
-  .subhead { margin: 20px 0 30px; max-width: 30ch; }
-  .stats { display: flex; flex-wrap: wrap; gap: 14px 0; margin-top: 38px; }
+  .subhead { margin: 20px auto 30px; max-width: 34ch; }
+  .row { justify-content: center; }
+  .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 0; margin-top: 38px; }
   .stat { padding: 2px 26px; border-left: 1px solid var(--hairline-blue); }
   .stat:first-child { padding-left: 0; border-left: 0; }
   .stat dt { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }

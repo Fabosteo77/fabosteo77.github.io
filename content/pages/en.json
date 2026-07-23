@@ -24,8 +24,8 @@
     "photo": "/images/fabien-portrait.png",
     "photoAlt": "Fabien Marié, osteopath D.O",
     "stats": [
-      { "value": "18 yrs", "label": "of experience" },
       { "value": "3", "label": "clinics in Gironde" },
+      { "value": "18 yrs", "label": "of experience" },
       { "value": "FR · EN", "label": "bilingual consultations" }
     ]
   },
