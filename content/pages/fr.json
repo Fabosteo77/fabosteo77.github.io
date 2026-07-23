@@ -24,9 +24,8 @@
     "photo": "/images/fabien-portrait.png",
     "photoAlt": "Fabien Marié, ostéopathe D.O",
     "stats": [
-      { "value": "20 ans", "label": "d'expérience" },
+      { "value": "18 ans", "label": "d'expérience" },
       { "value": "3", "label": "cabinets en Gironde" },
-      { "value": "19 avis", "label": "5 étoiles sur Google" },
       { "value": "FR · EN", "label": "consultations bilingues" }
     ]
   },
