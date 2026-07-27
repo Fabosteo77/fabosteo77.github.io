@@ -5,7 +5,8 @@
       "name": "site",
       "runtimeExecutable": "cmd.exe",
       "runtimeArgs": ["/c", "set PATH=C:\\Program Files\\nodejs;%PATH% && npm run tina:dev"],
-      "port": 4321
+      "port": 4321,
+      "autoPort": false
     },
     {
       "name": "design-preview",
