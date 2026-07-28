@@ -73,10 +73,11 @@ h3 { font: var(--t-headline); letter-spacing: -0.3px; }
 .on-blue .btn-primary::after { display: none; }
 .on-blue .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-white-btn-h); }
 
+/* Secondary keeps its resting border on hover — the cyan ring + lift are the only
+   hover signal, so the interaction language stays identical across every button. */
 .btn-secondary { background: var(--surface); color: var(--blue-deep); border: 1px solid var(--hairline); }
-.btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
 .on-blue .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border-blue-btn); }
-.on-blue .btn-secondary:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+.on-blue .btn-secondary:hover { background: rgba(255,255,255,.12); }
 
 .btn-ghost { background: transparent; color: inherit; border: 1px solid var(--border-blue-btn); }
 .btn-ghost:hover { background: rgba(255,255,255,.12); }
