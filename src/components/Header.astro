@@ -72,7 +72,7 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
     border-radius: var(--radius-btn); padding: 11px 16px; cursor: pointer;
     text-decoration: none;
     transition: background var(--dur-fast), outline-color var(--dur) var(--ease);
-    outline: 3px solid transparent; outline-offset: 3px;
+    outline: 3px solid transparent; outline-offset: 0;
   }
   .lang-switch:hover { background: rgba(255,255,255,.12); outline-color: var(--cyan); }
   .lang-switch :global(svg) { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; }
@@ -81,7 +81,7 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
     display: none; background: transparent; border: 1px solid var(--border-blue-btn);
     border-radius: var(--radius-btn); color: #fff; padding: 10px; cursor: pointer;
     transition: outline-color var(--dur) var(--ease);
-    outline: 3px solid transparent; outline-offset: 3px;
+    outline: 3px solid transparent; outline-offset: 0;
   }
   .menu-toggle:hover { outline-color: var(--cyan); }
   .menu-toggle :global(svg) { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.9; display: block; }

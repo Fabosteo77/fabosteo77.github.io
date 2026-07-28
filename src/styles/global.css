@@ -59,8 +59,8 @@ h3 { font: var(--t-headline); letter-spacing: -0.3px; }
   cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
   transition: transform var(--dur) var(--ease), outline-color var(--dur) var(--ease);
   position: relative; overflow: hidden; text-decoration: none;
-  /* Cyan highlight ring (charte accent) — transparent until hover. */
-  outline: 3px solid transparent; outline-offset: 3px;
+  /* Cyan highlight ring (charte accent) — transparent until hover, hugging the edge. */
+  outline: 3px solid transparent; outline-offset: 0;
 }
 .btn svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .btn-lg { padding: 16px 28px; border-radius: var(--radius-btn-lg); }
@@ -100,7 +100,7 @@ a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-ra
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(11,84,224,.16); border-color: var(--cyan); }
 .bg-blue .card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); box-shadow: none; color: #fff; }
-.bg-blue .card:hover { transform: translateY(-4px); background: rgba(255,255,255,.13); border-color: rgba(63,229,250,.55); box-shadow: 0 16px 36px rgba(3,20,55,.28); }
+.bg-blue .card:hover { transform: translateY(-4px); background: rgba(255,255,255,.13); border-color: var(--cyan); box-shadow: 0 16px 36px rgba(3,20,55,.28); }
 @media (prefers-reduced-motion: reduce) { .card:hover, .bg-blue .card:hover { transform: none; } }
 
 .chip-icon {
