@@ -38,7 +38,7 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
         </div>
       ))}
     </div>
-    {forWhom.footnote && <p class="footnote muted">{forWhom.footnote}</p>}
+    {forWhom.footnote && <p class="footnote">{forWhom.footnote}</p>}
     <div class="row ctas">
       {forWhom.bookCtaLabel && (
         <a class="btn btn-primary" href={bookHref} {...bookExt}><span>{forWhom.bookCtaLabel}</span></a>
@@ -53,6 +53,14 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
 <style>
   .intro { max-width: 60ch; margin-bottom: 12px; }
   .intro-2 { max-width: 70ch; margin-bottom: 34px; font-size: 16px; }
-  .footnote { margin-top: 26px; font-size: 15px; }
+  /* Preventive-medicine callout: cyan left bar + faint cyan wash (decorative cyan,
+     text stays white for readability on the blue section). */
+  .footnote {
+    margin-top: 30px; font-size: 15px; font-weight: 500; color: #fff;
+    display: inline-block; max-width: 68ch;
+    background: rgba(63, 229, 250, .10);
+    border-left: 4px solid var(--cyan);
+    border-radius: 10px; padding: 14px 18px;
+  }
   .ctas { margin-top: 26px; }
 </style>

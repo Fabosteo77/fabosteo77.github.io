@@ -23,6 +23,10 @@ img { max-width: 100%; display: block; }
 /* The hidden attribute must always win, even over display:flex components */
 [hidden] { display: none !important; }
 
+/* Brand text selection — cyan highlight, dark ink so it stays readable on any ground. */
+::selection { background: var(--cyan); color: var(--ink); }
+::-moz-selection { background: var(--cyan); color: var(--ink); }
+
 .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter-desktop); }
 @media (max-width: 768px) { .wrap { padding: 0 var(--gutter-mobile); } }
 

@@ -12,6 +12,14 @@ const { from, to, flip = false } = Astro.props;
 <div class="section-wave" style={`background:${from}`} aria-hidden="true">
   <svg viewBox="0 0 1440 64" preserveAspectRatio="none" class:list={[{ flip }]}>
     <path d="M0,34 C240,58 480,10 720,26 C960,42 1200,18 1440,38 L1440,64 L0,64 Z" style={`fill:${to}`} />
+    <path
+      class="crest"
+      d="M0,34 C240,58 480,10 720,26 C960,42 1200,18 1440,38"
+      fill="none"
+      stroke="var(--cyan)"
+      stroke-width="2.5"
+      vector-effect="non-scaling-stroke"
+    />
   </svg>
 </div>
 
