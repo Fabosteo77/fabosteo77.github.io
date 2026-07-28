@@ -38,7 +38,10 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
     flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font-family: var(--font); font-size: 16px; font-weight: 600; text-decoration: none;
     padding: 13px 10px; border-radius: var(--radius-btn); min-height: 48px;
+    transition: outline-color var(--dur) var(--ease);
+    outline: 3px solid transparent; outline-offset: -3px;
   }
+  .ab-btn:hover { outline-color: var(--cyan); }
   .ab-btn :global(svg) { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
   .ab-call { background: var(--surface); color: var(--blue-deep); border: 1px solid var(--hairline); }
   .ab-book { background: var(--blue-deep); color: #fff; }

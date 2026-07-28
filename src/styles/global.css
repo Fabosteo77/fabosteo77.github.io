@@ -57,8 +57,10 @@ h3 { font: var(--t-headline); letter-spacing: -0.3px; }
   font: var(--t-button); font-family: var(--font);
   border: 0; border-radius: var(--radius-btn); padding: 13px 22px;
   cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
-  transition: transform var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease), outline-color var(--dur) var(--ease);
   position: relative; overflow: hidden; text-decoration: none;
+  /* Cyan highlight ring (charte accent) — transparent until hover. */
+  outline: 3px solid transparent; outline-offset: 3px;
 }
 .btn svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .btn-lg { padding: 16px 28px; border-radius: var(--radius-btn-lg); }
@@ -78,6 +80,11 @@ h3 { font: var(--t-headline); letter-spacing: -0.3px; }
 
 .btn-ghost { background: transparent; color: inherit; border: 1px solid var(--border-blue-btn); }
 .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+/* Unified cyan hover ring on every button + a subtle lift for the ones that don't
+   already rise. Focus-visible (below) still overrides with the blue/cyan focus ring. */
+.btn:hover { outline-color: var(--cyan); }
+.btn-primary:hover, .btn-secondary:hover, .btn-ghost:hover { transform: translateY(-1px); }
 
 .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .on-blue .btn:focus-visible { outline: 3px solid var(--cyan-focus); outline-offset: 3px; }

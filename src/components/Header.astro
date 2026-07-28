@@ -70,15 +70,20 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
     font-family: var(--font); font-size: 15px; font-weight: 500; color: #fff;
     background: transparent; border: 1px solid var(--border-blue-btn);
     border-radius: var(--radius-btn); padding: 11px 16px; cursor: pointer;
-    text-decoration: none; transition: background var(--dur-fast);
+    text-decoration: none;
+    transition: background var(--dur-fast), outline-color var(--dur) var(--ease);
+    outline: 3px solid transparent; outline-offset: 3px;
   }
-  .lang-switch:hover { background: rgba(255,255,255,.12); }
+  .lang-switch:hover { background: rgba(255,255,255,.12); outline-color: var(--cyan); }
   .lang-switch :global(svg) { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
   .menu-toggle {
     display: none; background: transparent; border: 1px solid var(--border-blue-btn);
     border-radius: var(--radius-btn); color: #fff; padding: 10px; cursor: pointer;
+    transition: outline-color var(--dur) var(--ease);
+    outline: 3px solid transparent; outline-offset: 3px;
   }
+  .menu-toggle:hover { outline-color: var(--cyan); }
   .menu-toggle :global(svg) { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.9; display: block; }
   .menu-toggle :global(.icon-close) { display: none; }
   .site-header.nav-open .menu-toggle :global(.icon-menu) { display: none; }
