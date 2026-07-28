@@ -39,6 +39,9 @@ const cards = (expertise.cards ?? []).filter(Boolean);
 
 <style>
   .heading { color: var(--blue-deep); margin-bottom: 30px; }
+  /* Cyan accent tab across the top edge of each expertise card (charte accent). */
+  .card { position: relative; overflow: hidden; }
+  .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--cyan); }
   .card-title { color: var(--blue-deep); font-size: 20px; font-weight: 600; letter-spacing: -0.2px; }
   .body { margin-top: 10px; font: var(--t-body-sm); }
   .card-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 16px; }

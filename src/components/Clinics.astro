@@ -56,7 +56,8 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
   .intro { max-width: 62ch; margin-bottom: 34px; }
   .clinic { display: flex; flex-direction: column; }
   .clinic .line { display: flex; gap: 10px; font: var(--t-body-sm); padding: 4px 0; align-items: flex-start; }
-  .clinic .line :global(svg) { width: 17px; height: 17px; flex: none; margin-top: 3px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+  /* Address / hours icons in cyan (charte accent) rather than muted white. */
+  .clinic .line :global(svg) { width: 17px; height: 17px; flex: none; margin-top: 3px; stroke: var(--cyan); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .clinic .note { padding-left: 27px; }
   .clinic-ctas { margin-top: auto; padding-top: 18px; }
   .payment { margin-top: 28px; font-size: 14px; }
