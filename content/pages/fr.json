@@ -95,13 +95,13 @@
         "icon": "smile",
         "title": "Pédiatrie",
         "body": "Prise en charge des troubles fonctionnels de l'enfant (posturaux, digestifs, séquelles de chutes, troubles du sommeil, etc.) pour une croissance harmonieuse et confortable.",
-        "image": ""
+        "image": "/images/expertise-pediatrie.jpg"
       },
       {
         "icon": "brain",
         "title": "Approche psychosomatique",
         "body": "Une approche personnelle d'ostéopathie que je pourrai associer avec des techniques de sophrologie, d'hypnose ou de relaxation selon vos besoins.",
-        "image": ""
+        "image": "/images/expertise-psychosomatique.jpg"
       }
     ]
   },
