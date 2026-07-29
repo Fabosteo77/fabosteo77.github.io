@@ -23,10 +23,10 @@ const directionsLabel = locale === 'fr' ? 'Itinéraire' : 'Directions';
 const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
-<section class="bg-blue on-blue" id={id}>
+<section id={id}>
   <div class="wrap">
     <div class="section-bar" aria-hidden="true"></div>
-    <h2>{clinics.heading}</h2>
+    <h2 class="heading">{clinics.heading}</h2>
     {clinics.subheading && <p class="lead muted intro">{clinics.subheading}</p>}
     <div class="grid g3">
       {items.map((clinic) => {
@@ -53,11 +53,13 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
 </section>
 
 <style>
+  .heading { color: var(--blue-deep); }
   .intro { max-width: 62ch; margin-bottom: 34px; }
   .clinic { display: flex; flex-direction: column; }
+  .clinic h3 { color: var(--blue-deep); }
   .clinic .line { display: flex; gap: 10px; font: var(--t-body-sm); padding: 4px 0; align-items: flex-start; }
-  /* Address / hours icons in cyan (charte accent) rather than muted white. */
-  .clinic .line :global(svg) { width: 17px; height: 17px; flex: none; margin-top: 3px; stroke: var(--cyan); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  /* Address / hours icons: brand blue on the light card (cyan would be too faint). */
+  .clinic .line :global(svg) { width: 17px; height: 17px; flex: none; margin-top: 3px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .clinic .note { padding-left: 27px; }
   .clinic-ctas { margin-top: auto; padding-top: 18px; }
   .payment { margin-top: 28px; font-size: 14px; }

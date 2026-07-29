@@ -20,7 +20,7 @@ const cards = (forWhom.cards ?? []).filter(Boolean);
 const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
-<section class="bg-blue on-blue" id={id}>
+<section class="bg-gradient on-blue" id={id}>
   <div class="wrap">
     <div class="section-bar" aria-hidden="true"></div>
     <h2>{forWhom.heading}</h2>
@@ -53,14 +53,15 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
 <style>
   .intro { max-width: 60ch; margin-bottom: 12px; }
   .intro-2 { max-width: 70ch; margin-bottom: 34px; font-size: 16px; }
-  /* Preventive-medicine callout: cyan left bar + faint cyan wash (decorative cyan,
-     text stays white for readability on the blue section). */
+  /* Preventive-medicine callout: solid white with a cyan left bar, so it stays
+     readable over the cyan end of the gradient. */
   .footnote {
-    margin-top: 30px; font-size: 15px; font-weight: 500; color: #fff;
+    margin-top: 30px; font-size: 15px; font-weight: 500; color: var(--ink);
     display: inline-block; max-width: 68ch;
-    background: rgba(63, 229, 250, .10);
+    background: var(--surface);
     border-left: 4px solid var(--cyan);
     border-radius: 10px; padding: 14px 18px;
+    box-shadow: var(--shadow);
   }
   .ctas { margin-top: 26px; }
 </style>

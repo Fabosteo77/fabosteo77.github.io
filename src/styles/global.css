@@ -36,6 +36,38 @@ section { padding: var(--space-section) 0; }
 .bg-blue { background: var(--blue-deep); color: var(--on-blue); }
 .bg-blue h2, .bg-blue h3 { color: #fff; }
 
+/* Charte gradient section: deep blue at the top (headings read in white) opening to
+   cyan at the bottom. Cards inside stay solid white so their text stays readable
+   over the cyan end — never put text straight on the cyan. */
+.bg-gradient {
+  background: linear-gradient(180deg, var(--blue-deep) 0%, #0F62FF 42%, #17A9E8 78%, var(--cyan) 100%);
+  color: var(--on-blue);
+}
+/* Only section-level headings go white; card titles keep their dark ink because
+   cards are solid white on the gradient. */
+.bg-gradient > .wrap > h2 { color: #fff; }
+.bg-gradient > .wrap > .lead,
+.bg-gradient > .wrap > p.muted { color: var(--on-blue-muted); }
+
+/* Cards on a gradient section are solid white, so everything inside them reverts to
+   the light-background palette (the section's on-blue context must not leak in). */
+.bg-gradient .card { color: var(--ink); }
+.bg-gradient .card h3 { color: var(--blue-deep); }
+.bg-gradient .card .muted { color: var(--ink-muted); }
+.bg-gradient .card .divider { background: var(--hairline); }
+.bg-gradient .card .stars { color: var(--star-light); }
+.bg-gradient .card .chip-icon { background: var(--chip-light); color: var(--blue-deep); }
+
+/* Outline buttons would sit on the cyan end of the gradient with white-on-cyan text,
+   which is unreadable — give them a solid white face with deep-blue ink instead.
+   The primary stays white with a lift shadow, so the hierarchy still reads. */
+.bg-gradient.on-blue .btn-secondary,
+.bg-gradient.on-blue .btn-ghost {
+  background: var(--surface); color: var(--blue-deep); border: 1px solid var(--blue-deep);
+}
+.bg-gradient.on-blue .btn-secondary:hover,
+.bg-gradient.on-blue .btn-ghost:hover { background: var(--surface); }
+
 h1 { font: var(--t-display-xl); letter-spacing: -1.5px; }
 h2 { font: var(--t-display-lg); letter-spacing: -1px; margin-bottom: 8px; }
 h3 { font: var(--t-headline); letter-spacing: -0.3px; }

@@ -67,6 +67,8 @@ const jsonLd = {
       googleReviewsUrl={settings.googleReviewsUrl}
       reviewsAnchor={'#' + anchors.reviews}
     />
+    {/* Rhythm: light ↔ gradient (deep blue at the top, cyan at the bottom).
+        Each wave blends the colour ending the section above into the one starting below. */}
     <SectionWave from="var(--canvas)" to="var(--blue-deep)" />
     <ForWhom
       id={anchors.forWhom}
@@ -74,10 +76,11 @@ const jsonLd = {
       bookHref={book}
       clinicsAnchor={'#' + anchors.clinics}
     />
-    <SectionWave from="var(--blue-deep)" to="var(--canvas)" flip />
+    <SectionWave from="var(--cyan)" to="var(--canvas)" flip />
     <Expertise id="expertise" expertise={page.expertise ?? {}} />
+    <SectionWave from="var(--canvas)" to="var(--blue-deep)" />
     <Reviews id={anchors.reviews} reviews={page.reviews ?? {}} googleReviewsUrl={settings.googleReviewsUrl} />
-    <SectionWave from="var(--canvas)" to="var(--blue-deep)" flip />
+    <SectionWave from="var(--cyan)" to="var(--canvas)" flip />
     <Clinics
       id={anchors.clinics}
       clinics={page.clinics ?? {}}
@@ -85,13 +88,13 @@ const jsonLd = {
       bookHref={book}
       locale={locale}
     />
-    <SectionWave from="var(--blue-deep)" to="var(--canvas)" />
+    <SectionWave from="var(--canvas)" to="var(--blue-deep)" />
     <Contact
       contact={page.contact ?? {}}
       settings={settings}
       clinicNames={(page.clinics?.items ?? []).filter(Boolean).map((c) => c!.name ?? '')}
     />
-    <SectionWave from="var(--canvas)" to="var(--blue-900)" flip />
+    <SectionWave from="var(--cyan)" to="var(--blue-900)" flip />
   </main>
   <Footer footer={page.footer ?? {}} header={page.header ?? {}} settings={settings} locale={locale} />
   <CookieBanner cookie={page.cookie ?? {}} />

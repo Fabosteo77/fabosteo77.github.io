@@ -16,7 +16,7 @@ const items = (reviews.items ?? []).filter(Boolean);
 const moreUrl = googleReviewsUrl?.trim();
 ---
 
-<section id={id}>
+<section id={id} class="bg-gradient on-blue">
   <div class="wrap">
     <div class="section-bar" aria-hidden="true"></div>
     <h2 class="heading">{reviews.heading}</h2>
@@ -47,7 +47,7 @@ const moreUrl = googleReviewsUrl?.trim();
 </section>
 
 <style>
-  .heading { color: var(--blue-deep); margin-bottom: 30px; }
+  .heading { color: #fff; margin-bottom: 30px; }
   .review { display: flex; flex-direction: column; gap: 12px; }
   .review-head { display: flex; align-items: center; gap: 12px; }
   .avatar {
