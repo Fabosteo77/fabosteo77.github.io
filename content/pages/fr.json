@@ -7,10 +7,22 @@
   },
   "header": {
     "links": [
-      { "label": "À propos", "href": "#fabien" },
-      { "label": "Pour qui ?", "href": "#pour-qui" },
-      { "label": "Expertise", "href": "#expertise" },
-      { "label": "Cabinets", "href": "#cabinets" }
+      {
+        "label": "À propos",
+        "href": "#fabien"
+      },
+      {
+        "label": "Pour qui ?",
+        "href": "#pour-qui"
+      },
+      {
+        "label": "Expertise",
+        "href": "#expertise"
+      },
+      {
+        "label": "Cabinets",
+        "href": "#cabinets"
+      }
     ],
     "contactLabel": "Contact",
     "switcherLabel": "English",
@@ -24,9 +36,18 @@
     "photo": "/images/fabien-portrait.png",
     "photoAlt": "Fabien Marié, ostéopathe D.O",
     "stats": [
-      { "value": "18 ans", "label": "d'expérience" },
-      { "value": "FR · EN", "label": "consultations bilingues" },
-      { "value": "3", "label": "cabinets en Gironde" }
+      {
+        "value": "18 ans",
+        "label": "d'expérience"
+      },
+      {
+        "value": "FR · EN",
+        "label": "consultations bilingues"
+      },
+      {
+        "value": "3",
+        "label": "cabinets en Gironde"
+      }
     ]
   },
   "about": {
@@ -59,7 +80,10 @@
       {
         "icon": "heart",
         "title": "Femmes enceintes",
-        "items": ["Préparation à l'accouchement", "Douleurs de grossesse"]
+        "items": [
+          "Préparation à l'accouchement",
+          "Douleurs de grossesse"
+        ]
       },
       {
         "icon": "baby",
@@ -144,7 +168,8 @@
         "name": "Talence",
         "address": "Château Labro, 13 Impasse Peybouquey, 33400 Talence",
         "hours": "08h00 - 20h00",
-        "note": "Parking gratuit à disposition"
+        "note": "Parking gratuit à disposition",
+        "image": "/images/cabinet-talence.jpg"
       },
       {
         "name": "Mérignac",

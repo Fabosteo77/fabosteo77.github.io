@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
+import { resolveImage } from '../lib/images';
 
 interface Props {
   id: string;
@@ -7,7 +9,7 @@ interface Props {
     heading?: string | null;
     subheading?: string | null;
     bookCtaLabel?: string | null;
-    items?: ({ name?: string | null; address?: string | null; hours?: string | null; note?: string | null } | null)[] | null;
+    items?: ({ name?: string | null; address?: string | null; hours?: string | null; note?: string | null; image?: string | null } | null)[] | null;
     payment?: (string | null)[] | null;
   };
   clinicLinks?: ({ name?: string | null; mapsUrl?: string | null } | null)[] | null;
@@ -31,8 +33,18 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
     <div class="grid g3">
       {items.map((clinic) => {
         const maps = mapsFor(clinic!.name);
+        const photo = resolveImage(clinic!.image);
         return (
           <div class="card clinic">
+          {photo && (
+            <Image
+              class="clinic-img"
+              src={photo}
+              alt=""
+              widths={[360, 720]}
+              sizes="(max-width: 768px) 92vw, 340px"
+            />
+          )}
             <h3>{clinic!.name}</h3>
             <div class="divider"></div>
             <p class="line"><Icon name="map-pin" /><span>{clinic!.address}</span></p>
@@ -56,6 +68,8 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
   .heading { color: var(--blue-deep); }
   .intro { max-width: 62ch; margin-bottom: 34px; }
   .clinic { display: flex; flex-direction: column; }
+  /* 3:2 photo banner at the top of the card — architecture reads well wide. */
+  .clinic-img { width: 100%; aspect-ratio: 3 / 2; height: auto; object-fit: cover; border-radius: 10px; margin-bottom: 16px; }
   .clinic h3 { color: var(--blue-deep); }
   .clinic .line { display: flex; gap: 10px; font: var(--t-body-sm); padding: 4px 0; align-items: flex-start; }
   /* Address / hours icons: brand blue on the light card (cyan would be too faint). */

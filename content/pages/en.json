@@ -7,10 +7,22 @@
   },
   "header": {
     "links": [
-      { "label": "About", "href": "#fabien" },
-      { "label": "Patients", "href": "#for-whom" },
-      { "label": "Expertise", "href": "#expertise" },
-      { "label": "Locations", "href": "#clinics" }
+      {
+        "label": "About",
+        "href": "#fabien"
+      },
+      {
+        "label": "Patients",
+        "href": "#for-whom"
+      },
+      {
+        "label": "Expertise",
+        "href": "#expertise"
+      },
+      {
+        "label": "Locations",
+        "href": "#clinics"
+      }
     ],
     "contactLabel": "Contact",
     "switcherLabel": "Français",
@@ -24,9 +36,18 @@
     "photo": "/images/fabien-portrait.png",
     "photoAlt": "Fabien Marié, osteopath D.O",
     "stats": [
-      { "value": "18 yrs", "label": "of experience" },
-      { "value": "FR · EN", "label": "bilingual consultations" },
-      { "value": "3", "label": "clinics in Gironde" }
+      {
+        "value": "18 yrs",
+        "label": "of experience"
+      },
+      {
+        "value": "FR · EN",
+        "label": "bilingual consultations"
+      },
+      {
+        "value": "3",
+        "label": "clinics in Gironde"
+      }
     ]
   },
   "about": {
@@ -59,7 +80,10 @@
       {
         "icon": "heart",
         "title": "Pregnant Women",
-        "items": ["Childbirth preparation", "Pregnancy related pain"]
+        "items": [
+          "Childbirth preparation",
+          "Pregnancy related pain"
+        ]
       },
       {
         "icon": "baby",
@@ -144,7 +168,8 @@
         "name": "Talence",
         "address": "Château Labro, 13 Impasse Peybouquey, 33400 Talence",
         "hours": "08h00 - 20h00",
-        "note": "Free parking available"
+        "note": "Free parking available",
+        "image": "/images/cabinet-talence.jpg"
       },
       {
         "name": "Mérignac",
