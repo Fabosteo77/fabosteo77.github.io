@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "tina:dev": "tinacms dev -c \"astro dev --ignore-lock\"",
+    "tina:dev": "tinacms dev -c \"astro dev\"",
     "tina:build": "tinacms build --skip-cloud-checks --content=local -c \"astro build\""
   },
   "dependencies": {
