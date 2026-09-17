@@ -22,6 +22,10 @@
       {
         "label": "Cabinets",
         "href": "#cabinets"
+      },
+      {
+        "label": "Tarifs",
+        "href": "#tarifs"
       }
     ],
     "contactLabel": "Contact",
@@ -174,16 +178,24 @@
       },
       {
         "name": "Mérignac",
-        "address": "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac",
+        "address": "Medical Stadium, 8 Rue Georges Nègrevergne, 33700 Mérignac",
         "hours": "08h00 - 20h00",
         "note": "Parking gratuit à disposition",
         "image": "/images/cabinet-merignac.jpg"
       }
     ],
+    "feesHeading": "Tarifs et remboursement",
+    "fees": [
+      {
+        "label": "Consultation, quel que soit le motif",
+        "duration": "Environ 40 min",
+        "price": "65 €"
+      }
+    ],
     "payment": [
-      "💳 Chèques, espèces et carte bancaire",
-      "Non remboursé par l'Assurance Maladie",
-      "Remboursement possible selon votre mutuelle"
+      "Chèques, espèces et carte bancaire acceptés",
+      "Non remboursé par l’Assurance Maladie",
+      "Remboursement partiel possible par votre mutuelle : une facture vous est remise à chaque séance"
     ]
   },
   "contact": {

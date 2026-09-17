@@ -133,7 +133,7 @@ clinics:
     mapsUrl: ""   # TODO
     cta: "Prendre RDV"
   - name: "Mérignac"
-    address: "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac"
+    address: "Medical Stadium, 8 Rue Georges Nègrevergne, 33700 Mérignac"
     hours: "08h00 - 20h00"
     note: ""
     mapsUrl: ""   # TODO
@@ -304,7 +304,7 @@ clinics:
     mapsUrl: ""   # TODO
     cta: "Book Appointment"
   - name: "Mérignac"
-    address: "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac"
+    address: "Medical Stadium, 8 Rue Georges Nègrevergne, 33700 Mérignac"
     hours: "08h00 - 20h00"
     note: ""
     mapsUrl: ""   # TODO

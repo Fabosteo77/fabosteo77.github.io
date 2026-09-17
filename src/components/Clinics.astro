@@ -17,17 +17,22 @@ interface Props {
       image?: string | null;
       badge?: string | null;
     } | null)[] | null;
+    feesHeading?: string | null;
+    fees?: ({ label?: string | null; duration?: string | null; price?: string | null } | null)[] | null;
     payment?: (string | null)[] | null;
   };
+  feesId: string;
   clinicLinks?: ({ name?: string | null; mapsUrl?: string | null; mapsEmbedUrl?: string | null } | null)[] | null;
   bookHref: string;
   locale: 'fr' | 'en';
 }
-const { id, clinics, clinicLinks, bookHref, locale } = Astro.props;
+const { id, feesId, clinics, clinicLinks, bookHref, locale } = Astro.props;
 const items = (clinics.items ?? []).filter(Boolean);
 // Two clinics sit on a 2-column grid; three or more keep the 3-column layout.
 const twoCols = items.length <= 2;
 const payment = (clinics.payment ?? []).filter(Boolean);
+const fees = (clinics.fees ?? []).filter((fee) => fee?.price?.trim());
+const showFees = fees.length > 0 || payment.length > 0;
 const linkFor = (name?: string | null) => (clinicLinks ?? []).find((c) => c?.name === name);
 const mapsFor = (name?: string | null) => linkFor(name)?.mapsUrl?.trim() || undefined;
 const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
@@ -111,8 +116,27 @@ const embedFor = (address?: string | null) =>
         );
       })}
     </div>
-    {payment.length > 0 && (
-      <p class="payment muted">{payment.join('  ·  ')}</p>
+
+    {showFees && (
+      <div class="card fees" id={feesId}>
+        <div class="fees-main">
+          {clinics.feesHeading && <h3>{clinics.feesHeading}</h3>}
+          {fees.map((fee) => (
+            <div class="fee">
+              <div class="fee-text">
+                <span class="fee-label">{fee!.label}</span>
+                {fee!.duration && <span class="fee-duration muted"><Icon name="clock" />{fee!.duration}</span>}
+              </div>
+              <span class="fee-price">{fee!.price}</span>
+            </div>
+          ))}
+        </div>
+        {payment.length > 0 && (
+          <ul class="fees-info">
+            {payment.map((line) => <li><Icon name="check-circle" /><span>{line}</span></li>)}
+          </ul>
+        )}
+      </div>
     )}
   </div>
 </section>
@@ -130,7 +154,27 @@ const embedFor = (address?: string | null) =>
   .clinic .line :global(svg) { width: 17px; height: 17px; flex: none; margin-top: 3px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .clinic .note { padding-left: 27px; }
   .clinic-ctas { margin-top: auto; padding-top: 18px; }
-  .payment { margin-top: 28px; font-size: 14px; }
+
+  /* Fees: one card under the clinics. Price in deep blue on white; cyan only as the
+     left accent bar, per the charte. Price left, practical info right; stacked on phones. */
+  .fees {
+    margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px 40px; align-items: center; border-left: 5px solid var(--cyan);
+  }
+  .fees h3 { color: var(--blue-deep); margin-bottom: 12px; }
+  .fee { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 6px 0; }
+  .fee + .fee { border-top: 1px solid var(--hairline); }
+  .fee-text { display: flex; flex-direction: column; gap: 4px; }
+  .fee-label { font-weight: 600; color: var(--ink); }
+  .fee-duration { display: inline-flex; align-items: center; gap: 6px; font: var(--t-body-sm); }
+  .fee-price { font-size: 34px; line-height: 1; font-weight: 800; color: var(--blue-deep); white-space: nowrap; }
+  .fees-info { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font: var(--t-body-sm); }
+  .fees-info li { display: flex; gap: 10px; align-items: flex-start; }
+  .fees :global(svg) { width: 17px; height: 17px; flex: none; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .fees-info :global(svg) { margin-top: 3px; }
+  @media (max-width: 768px) {
+    .fees { grid-template-columns: 1fr; }
+  }
 
   /* "Cabinet principal" pill. Cyan stays decorative (border + star): the text sits on
      white in deep blue, never on cyan, per the charte. */

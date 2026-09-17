@@ -26,8 +26,8 @@ const book = bookHref(settings);
 
 const anchors =
   locale === 'fr'
-    ? { forWhom: 'pour-qui', reviews: 'avis', clinics: 'cabinets' }
-    : { forWhom: 'for-whom', reviews: 'reviews', clinics: 'clinics' };
+    ? { forWhom: 'pour-qui', reviews: 'avis', clinics: 'cabinets', fees: 'tarifs' }
+    : { forWhom: 'for-whom', reviews: 'reviews', clinics: 'clinics', fees: 'fees' };
 
 const path = locale === 'fr' ? '/' : '/en/';
 const alternatePath = locale === 'fr' ? '/en/' : '/';
@@ -52,6 +52,7 @@ const jsonLd = {
   medicalSpecialty: 'Osteopathic',
   image: site + '/images/fabien-portrait.png',
   ...(sameAs.length > 0 ? { sameAs } : {}),
+  ...(page.clinics?.fees?.[0]?.price ? { priceRange: page.clinics.fees[0].price } : {}),
   department: (page.clinics?.items ?? []).filter(Boolean).map((clinic) => ({
     '@type': 'MedicalBusiness',
     name: `Fabien Marié — Ostéopathe (${clinic!.name})`,
@@ -93,6 +94,7 @@ const jsonLd = {
     <SectionWave from="var(--cyan)" to="var(--canvas)" flip />
     <Clinics
       id={anchors.clinics}
+      feesId={anchors.fees}
       clinics={page.clinics ?? {}}
       clinicLinks={settings.clinicLinks}
       bookHref={book}

@@ -265,7 +265,20 @@ export default defineConfig({
                   { type: 'string', name: 'badge', label: 'Pastille (ex. Cabinet principal) — laisser vide pour aucune' },
                 ],
               },
-              { type: 'string', name: 'payment', label: 'Paiement / remboursement', list: true },
+              { type: 'string', name: 'feesHeading', label: 'Tarifs — titre' },
+              {
+                type: 'object',
+                name: 'fees',
+                label: 'Tarifs — prestations',
+                list: true,
+                ui: { itemProps: (item: Record<string, unknown>) => ({ label: `${item?.label ?? ''} — ${item?.price ?? ''}` }) },
+                fields: [
+                  { type: 'string', name: 'label', label: 'Prestation (ex. Consultation, tout motif)' },
+                  { type: 'string', name: 'duration', label: 'Durée (ex. environ 40 min)' },
+                  { type: 'string', name: 'price', label: 'Prix (ex. 65 €)' },
+                ],
+              },
+              { type: 'string', name: 'payment', label: 'Paiement / remboursement (une ligne par point)', list: true },
             ],
           },
           {

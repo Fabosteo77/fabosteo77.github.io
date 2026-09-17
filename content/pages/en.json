@@ -22,6 +22,10 @@
       {
         "label": "Locations",
         "href": "#clinics"
+      },
+      {
+        "label": "Fees",
+        "href": "#fees"
       }
     ],
     "contactLabel": "Contact",
@@ -174,16 +178,24 @@
       },
       {
         "name": "Mérignac",
-        "address": "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac",
+        "address": "Medical Stadium, 8 Rue Georges Nègrevergne, 33700 Mérignac",
         "hours": "08h00 - 20h00",
         "note": "Free parking available",
         "image": "/images/cabinet-merignac.jpg"
       }
     ],
+    "feesHeading": "Fees and reimbursement",
+    "fees": [
+      {
+        "label": "Consultation, whatever the reason",
+        "duration": "About 40 min",
+        "price": "€65"
+      }
+    ],
     "payment": [
-      "💳 Checks, cash and credit card",
-      "Not reimbursed by Health insurance",
-      "Reimbursement possible depending on your health insurance"
+      "Checks, cash and credit card accepted",
+      "Not reimbursed by the French national health insurance",
+      "Partial reimbursement possible through your health insurance: you receive an invoice after each session"
     ]
   },
   "contact": {
