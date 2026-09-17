@@ -83,7 +83,12 @@ export default defineConfig({
             ui: { itemProps: (item: Record<string, unknown>) => ({ label: item?.name }) },
             fields: [
               { type: 'string', name: 'name', label: 'Cabinet' },
-              { type: 'string', name: 'mapsUrl', label: 'Lien Google Maps' },
+              { type: 'string', name: 'mapsUrl', label: 'Lien du bouton « Itinéraire » (Google Maps)' },
+              {
+                type: 'string',
+                name: 'mapsEmbedUrl',
+                label: 'Carte : adresse « src » du code Google Maps > Partager > Intégrer une carte',
+              },
             ],
           },
         ],
