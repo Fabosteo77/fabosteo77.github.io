@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const SITE_URL = process.env.SITE_URL || 'https://fabosteo77.github.io';
+const SITE_URL = process.env.SITE_URL || 'https://fabosteo.fr';
 
 export default defineConfig({
   site: SITE_URL,

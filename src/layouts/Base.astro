@@ -18,7 +18,7 @@ interface Props {
 
 const { locale, title, description, path, alternatePath, ogImage, noindex, jsonLd } = Astro.props;
 
-const site = (import.meta.env.SITE ?? 'https://fabosteo77.github.io').replace(/\/$/, '');
+const site = (import.meta.env.SITE ?? 'https://fabosteo.fr').replace(/\/$/, '');
 const canonical = site + path;
 const alternate = alternatePath !== undefined ? site + alternatePath : undefined;
 const otherLocale = locale === 'fr' ? 'en' : 'fr';

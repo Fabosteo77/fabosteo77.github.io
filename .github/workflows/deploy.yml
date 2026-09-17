@@ -10,7 +10,7 @@ jobs:
     env:
       # Public identifier (not a secret) — filled in when the Tina Cloud project is created (Phase 5)
       TINA_PUBLIC_CLIENT_ID: ${{ vars.TINA_PUBLIC_CLIENT_ID }}
-      SITE_URL: https://fabosteo77.github.io
+      SITE_URL: https://fabosteo.fr
       NODE_OPTIONS: --max-old-space-size=4096
     steps:
       - uses: actions/checkout@v4
