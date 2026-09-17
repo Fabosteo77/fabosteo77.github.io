@@ -53,6 +53,8 @@ const ajax = `https://formsubmit.co/ajax/${settings.formRecipient}`;
         <input type="hidden" name="_subject" value={form.heading ?? 'Message'} />
         <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="_honey" class="honey" tabindex="-1" aria-hidden="true" autocomplete="off" />
+        {form.heading && <h3 class="form-title">{form.heading}</h3>}
+        {form.intro && <p class="form-intro">{form.intro}</p>}
         <div class="form-grid">
           <div class="field">
             <label for="f-prenom">{form.firstNameLabel} <span class="req" aria-hidden="true">*</span></label>
@@ -121,6 +123,8 @@ const ajax = `https://formsubmit.co/ajax/${settings.formRecipient}`;
   .social-chips .chip-icon { width: 46px; height: 46px; margin-bottom: 0; border-radius: 12px; }
   .social-chips .chip-icon :global(svg) { width: 22px; height: 22px; }
   .honey { display: none; }
+  .form-title { color: var(--blue-deep); margin-bottom: 6px; }
+  .form-intro { font: var(--t-body-sm); color: var(--ink-muted); margin-bottom: 20px; }
   fieldset { border: 0; }
   legend { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; padding: 0; }
   .form-notice { margin-top: 18px; }
