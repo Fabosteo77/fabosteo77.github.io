@@ -17,9 +17,19 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '22', cache: 'npm' }
       - run: npm ci
-      - run: npm run tina:build
+      # With a Tina Cloud project: full build, /admin edits content online.
+      - name: Build (Tina Cloud)
+        if: ${{ vars.TINA_PUBLIC_CLIENT_ID !=  }}
+        run: npm run tina:build
         env:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+      # Until Tina Cloud is set up: read content through a local Tina server for the
+      # duration of the build. /admin would point at localhost, so it is not published.
+      - name: Build (local content, no Tina Cloud yet)
+        if: ${{ vars.TINA_PUBLIC_CLIENT_ID ==  }}
+        run: |
+          npx tinacms dev -c "astro build"
+          rm -rf dist/admin
       - uses: actions/upload-pages-artifact@v3
         with: { path: dist }
   deploy:
