@@ -187,7 +187,7 @@
     "feesHeading": "Fees and reimbursement",
     "fees": [
       {
-        "label": "Consultation, whatever the reason",
+        "label": "Consultation",
         "duration": "About 40 min",
         "price": "€65"
       }
@@ -195,7 +195,7 @@
     "payment": [
       "Checks, cash and credit card accepted",
       "Not reimbursed by the French national health insurance",
-      "Partial reimbursement possible through your health insurance: you receive an invoice after each session"
+      "Partial or full reimbursement possible depending on your health insurance: you will receive an invoice"
     ]
   },
   "contact": {

@@ -187,7 +187,7 @@
     "feesHeading": "Tarifs et remboursement",
     "fees": [
       {
-        "label": "Consultation, quel que soit le motif",
+        "label": "Consultation",
         "duration": "Environ 40 min",
         "price": "65 €"
       }
@@ -195,7 +195,7 @@
     "payment": [
       "Chèques, espèces et carte bancaire acceptés",
       "Non remboursé par l’Assurance Maladie",
-      "Remboursement partiel possible par votre mutuelle : une facture vous est remise à chaque séance"
+      "Remboursement partiel ou total possible selon votre mutuelle : une facture vous sera remise"
     ]
   },
   "contact": {
