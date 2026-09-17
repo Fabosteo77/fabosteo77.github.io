@@ -1,8 +1,8 @@
 {
   "locale": "fr",
   "seo": {
-    "metaTitle": "Fabien Marié — Ostéopathe D.O à Talence, Mérignac et Bordeaux",
-    "metaDescription": "Ostéopathe D.O en Gironde : une approche douce et personnalisée pour tous les âges — adultes, femmes enceintes, nourrissons. 3 cabinets : Talence, Mérignac, Bordeaux.",
+    "metaTitle": "Fabien Marié — Ostéopathe D.O à Talence et Mérignac, près de Bordeaux",
+    "metaDescription": "Ostéopathe D.O en Gironde : une approche douce et personnalisée pour tous les âges — adultes, femmes enceintes, nourrissons. 2 cabinets près de Bordeaux : Talence et Mérignac.",
     "ogImage": ""
   },
   "header": {
@@ -45,7 +45,7 @@
         "label": "consultations bilingues"
       },
       {
-        "value": "3",
+        "value": "2",
         "label": "cabinets en Gironde"
       }
     ]
@@ -161,7 +161,7 @@
   },
   "clinics": {
     "heading": "Mes cabinets",
-    "subheading": "Je vous accueille au sein de 3 cabinets en Gironde. Je me suis entouré de collaborateurs dans chaque cabinet pour vous recevoir dans la journée si nécessaire.",
+    "subheading": "Je vous accueille au sein de 2 cabinets en Gironde. Je me suis entouré de collaborateurs dans chaque cabinet pour vous recevoir dans la journée si nécessaire.",
     "bookCtaLabel": "Prendre RDV",
     "items": [
       {
@@ -175,13 +175,8 @@
         "name": "Mérignac",
         "address": "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac",
         "hours": "08h00 - 20h00",
-        "note": ""
-      },
-      {
-        "name": "Bordeaux",
-        "address": "52 Rue Huguerie, 33000 Bordeaux",
-        "hours": "08h00 - 20h00",
-        "note": ""
+        "note": "Parking gratuit à disposition",
+        "image": "/images/cabinet-merignac.jpg"
       }
     ],
     "payment": [

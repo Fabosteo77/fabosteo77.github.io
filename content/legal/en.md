@@ -10,7 +10,7 @@ seo:
 
 This site is published by **Fabien Marié, Osteopath D.O**.
 
-- Clinics: Talence, Mérignac and Bordeaux (Gironde, France)
+- Clinics: Talence and Mérignac (Gironde, France)
 - Phone: +33 6 98 69 48 59
 - Email: contact@fabosteo.fr
 - SIRET number: *(to be completed)*

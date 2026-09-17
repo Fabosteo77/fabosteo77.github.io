@@ -10,7 +10,7 @@ seo:
 
 Ce site est édité par **Fabien Marié, Ostéopathe D.O**.
 
-- Cabinets : Talence, Mérignac et Bordeaux (Gironde)
+- Cabinets : Talence et Mérignac (Gironde)
 - Téléphone : 06 98 69 48 59
 - Email : contact@fabosteo.fr
 - N° SIRET : *(à compléter)*

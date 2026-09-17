@@ -1,8 +1,8 @@
 {
   "locale": "en",
   "seo": {
-    "metaTitle": "Fabien Marié — Osteopath D.O in Talence, Mérignac and Bordeaux",
-    "metaDescription": "Osteopath D.O in Gironde, France: a gentle, personalized approach for all ages — adults, pregnant women, infants. 3 clinics: Talence, Mérignac, Bordeaux. English spoken.",
+    "metaTitle": "Fabien Marié — Osteopath D.O in Talence and Mérignac, near Bordeaux",
+    "metaDescription": "Osteopath D.O in Gironde, France: a gentle, personalized approach for all ages — adults, pregnant women, infants. 2 clinics near Bordeaux: Talence and Mérignac. English spoken.",
     "ogImage": ""
   },
   "header": {
@@ -45,7 +45,7 @@
         "label": "bilingual consultations"
       },
       {
-        "value": "3",
+        "value": "2",
         "label": "clinics in Gironde"
       }
     ]
@@ -161,7 +161,7 @@
   },
   "clinics": {
     "heading": "My Clinics",
-    "subheading": "I welcome you in 3 clinics in Gironde. I have surrounded myself with collaborators in each clinic to receive you the same day if necessary.",
+    "subheading": "I welcome you in 2 clinics in Gironde. I have surrounded myself with collaborators in each clinic to receive you the same day if necessary.",
     "bookCtaLabel": "Book Appointment",
     "items": [
       {
@@ -175,13 +175,8 @@
         "name": "Mérignac",
         "address": "Medical Stadium, 8 Rue Georges Négrevergne, 33700 Mérignac",
         "hours": "08h00 - 20h00",
-        "note": ""
-      },
-      {
-        "name": "Bordeaux",
-        "address": "52 Rue Huguerie, 33000 Bordeaux",
-        "hours": "08h00 - 20h00",
-        "note": ""
+        "note": "Free parking available",
+        "image": "/images/cabinet-merignac.jpg"
       }
     ],
     "payment": [

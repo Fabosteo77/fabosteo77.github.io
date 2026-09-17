@@ -13,7 +13,6 @@
   },
   "clinicLinks": [
     { "name": "Talence", "mapsUrl": "" },
-    { "name": "Mérignac", "mapsUrl": "" },
-    { "name": "Bordeaux", "mapsUrl": "" }
+    { "name": "Mérignac", "mapsUrl": "" }
   ]
 }

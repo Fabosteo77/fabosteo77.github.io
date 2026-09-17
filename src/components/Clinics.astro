@@ -18,6 +18,8 @@ interface Props {
 }
 const { id, clinics, clinicLinks, bookHref, locale } = Astro.props;
 const items = (clinics.items ?? []).filter(Boolean);
+// Two clinics sit on a 2-column grid; three or more keep the 3-column layout.
+const twoCols = items.length <= 2;
 const payment = (clinics.payment ?? []).filter(Boolean);
 const mapsFor = (name?: string | null) =>
   (clinicLinks ?? []).find((c) => c?.name === name)?.mapsUrl?.trim() || undefined;
@@ -30,7 +32,7 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
     <div class="section-bar" aria-hidden="true"></div>
     <h2 class="heading">{clinics.heading}</h2>
     {clinics.subheading && <p class="lead muted intro">{clinics.subheading}</p>}
-    <div class="grid g3">
+    <div class:list={['grid', twoCols ? 'g2' : 'g3']}>
       {items.map((clinic) => {
         const maps = mapsFor(clinic!.name);
         const photo = resolveImage(clinic!.image);
@@ -41,8 +43,8 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
               class="clinic-img"
               src={photo}
               alt=""
-              widths={[360, 720]}
-              sizes="(max-width: 768px) 92vw, 340px"
+              widths={twoCols ? [500, 1000] : [360, 720]}
+              sizes={twoCols ? '(max-width: 768px) 92vw, 500px' : '(max-width: 768px) 92vw, 340px'}
             />
           )}
             <h3>{clinic!.name}</h3>
