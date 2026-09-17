@@ -9,8 +9,8 @@
 https://fabosteo77.github.io** (repo `Fabosteo77/fabosteo77.github.io`, deployed by
 `.github/workflows/deploy.yml`). Tina Cloud is **not set up yet**: CI builds with a local Tina server and
 does not publish `/admin`; once the repo variable `TINA_PUBLIC_CLIENT_ID` and secret `TINA_TOKEN` exist,
-CI switches to `npm run tina:build` automatically. Still to do: Tina Cloud account, Formsubmit
-activation email, then Phase 6 (point fabosteo.fr at GitHub Pages; the old site is on Netlify via OVH DNS
+CI switches to `npm run tina:build` automatically. Formsubmit is activated and tested (2026-09-17). Still to do: Tina Cloud account,
+then Phase 6 (point fabosteo.fr at GitHub Pages; the old site is on Netlify via OVH DNS
 until then).
 
 ---
