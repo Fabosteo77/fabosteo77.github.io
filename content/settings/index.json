@@ -12,7 +12,13 @@
     "youtube": "https://www.youtube.com/@Fabosteo33"
   },
   "clinicLinks": [
-    { "name": "Talence", "mapsUrl": "" },
-    { "name": "Mérignac", "mapsUrl": "" }
+    {
+      "name": "Talence",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Ch%C3%A2teau%20Labro%2C%2013%20Impasse%20Peybouquey%2C%2033400%20Talence"
+    },
+    {
+      "name": "Mérignac",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Medical%20Stadium%2C%208%20Rue%20Georges%20N%C3%A9grevergne%2C%2033700%20M%C3%A9rignac"
+    }
   ]
 }

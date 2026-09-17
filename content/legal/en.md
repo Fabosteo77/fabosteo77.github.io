@@ -28,7 +28,7 @@ In accordance with the General Data Protection Regulation (GDPR), you have the r
 
 ## Cookies
 
-This site uses **no tracking cookies and no analytics**. Should third-party services be added in the future, they would only load after your explicit consent through the cookie banner.
+This site uses **no tracking cookies and no analytics**. The one exception is each clinic’s **Google Maps** map: it only loads if you click “Show map” or accept third-party services in the banner. Google may then set its own cookies, governed by its [privacy policy](https://policies.google.com/privacy).
 
 ## Intellectual property
 

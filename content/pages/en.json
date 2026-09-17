@@ -169,7 +169,8 @@
         "address": "Château Labro, 13 Impasse Peybouquey, 33400 Talence",
         "hours": "08h00 - 20h00",
         "note": "Free parking available",
-        "image": "/images/cabinet-talence.jpg"
+        "image": "/images/cabinet-talence.jpg",
+        "badge": "Main clinic"
       },
       {
         "name": "Mérignac",
@@ -209,7 +210,7 @@
     }
   },
   "cookie": {
-    "message": "This site uses no tracking cookies. If third-party services (statistics, online booking) are ever added, they will only load with your consent.",
+    "message": "This site uses no tracking cookies. The clinics’ Google Maps only load with your consent: by clicking “OK”, or “Show map”.",
     "acceptLabel": "OK",
     "declineLabel": "Decline"
   },

@@ -257,6 +257,7 @@ export default defineConfig({
                   { type: 'string', name: 'hours', label: 'Horaires' },
                   { type: 'string', name: 'note', label: 'Note (ex. parking gratuit)' },
                   { type: 'image', name: 'image', label: 'Photo du cabinet (optionnelle)' },
+                  { type: 'string', name: 'badge', label: 'Pastille (ex. Cabinet principal) — laisser vide pour aucune' },
                 ],
               },
               { type: 'string', name: 'payment', label: 'Paiement / remboursement', list: true },

@@ -28,7 +28,7 @@ Conformément au Règlement général sur la protection des données (RGPD) et �
 
 ## Cookies
 
-Ce site n'utilise **aucun cookie de suivi ni outil de mesure d'audience**. Si des services tiers étaient ajoutés à l'avenir, ils ne se chargeraient qu'après votre consentement explicite via la bannière prévue à cet effet.
+Ce site n'utilise **aucun cookie de suivi ni outil de mesure d'audience**. La seule exception est la **carte Google Maps** de chaque cabinet : elle n'est chargée que si vous cliquez sur « Afficher la carte » ou acceptez les services tiers via la bannière. Google peut alors déposer ses propres cookies, régis par sa [politique de confidentialité](https://policies.google.com/privacy).
 
 ## Propriété intellectuelle
 

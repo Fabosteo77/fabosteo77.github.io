@@ -9,7 +9,14 @@ interface Props {
     heading?: string | null;
     subheading?: string | null;
     bookCtaLabel?: string | null;
-    items?: ({ name?: string | null; address?: string | null; hours?: string | null; note?: string | null; image?: string | null } | null)[] | null;
+    items?: ({
+      name?: string | null;
+      address?: string | null;
+      hours?: string | null;
+      note?: string | null;
+      image?: string | null;
+      badge?: string | null;
+    } | null)[] | null;
     payment?: (string | null)[] | null;
   };
   clinicLinks?: ({ name?: string | null; mapsUrl?: string | null } | null)[] | null;
@@ -23,8 +30,29 @@ const twoCols = items.length <= 2;
 const payment = (clinics.payment ?? []).filter(Boolean);
 const mapsFor = (name?: string | null) =>
   (clinicLinks ?? []).find((c) => c?.name === name)?.mapsUrl?.trim() || undefined;
-const directionsLabel = locale === 'fr' ? 'Itinéraire' : 'Directions';
 const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+
+const t = locale === 'fr'
+  ? {
+      directions: 'Itinéraire',
+      showMap: 'Afficher la carte',
+      mapNotice: 'Carte Google Maps, chargée uniquement à votre demande.',
+      mapTitle: 'Carte du cabinet de',
+    }
+  : {
+      directions: 'Directions',
+      showMap: 'Show map',
+      mapNotice: 'Google Maps, loaded only when you ask.',
+      mapTitle: 'Map of the clinic in',
+    };
+
+// Keyless Google Maps embed, centred on the clinic address. This is the /maps/embed
+// URL that `maps?q=…&output=embed` redirects to: the redirect itself carries
+// X-Frame-Options: SAMEORIGIN, so pointing the iframe at the final URL avoids it.
+const embedFor = (address?: string | null) =>
+  address
+    ? `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${encodeURIComponent(address).replace(/%20/g, '+')}!6i16!3m1!1s${locale}!5m1!1s${locale}`
+    : undefined;
 ---
 
 <section id={id}>
@@ -36,25 +64,42 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
       {items.map((clinic) => {
         const maps = mapsFor(clinic!.name);
         const photo = resolveImage(clinic!.image);
+        const embed = embedFor(clinic!.address);
+        const badge = clinic!.badge?.trim();
         return (
           <div class="card clinic">
-          {photo && (
-            <Image
-              class="clinic-img"
-              src={photo}
-              alt=""
-              widths={twoCols ? [500, 1000] : [360, 720]}
-              sizes={twoCols ? '(max-width: 768px) 92vw, 500px' : '(max-width: 768px) 92vw, 340px'}
-            />
-          )}
+            {photo && (
+              <div class="clinic-media">
+                <Image
+                  class="clinic-img"
+                  src={photo}
+                  alt=""
+                  widths={twoCols ? [500, 1000] : [360, 720]}
+                  sizes={twoCols ? '(max-width: 768px) 92vw, 500px' : '(max-width: 768px) 92vw, 340px'}
+                />
+                {badge && <span class="clinic-badge"><Icon name="star" />{badge}</span>}
+              </div>
+            )}
+            {!photo && badge && <span class="clinic-badge inline"><Icon name="star" />{badge}</span>}
             <h3>{clinic!.name}</h3>
             <div class="divider"></div>
             <p class="line"><Icon name="map-pin" /><span>{clinic!.address}</span></p>
             {clinic!.hours && <p class="line"><Icon name="clock" /><span>{clinic!.hours}</span></p>}
             {clinic!.note && <p class="line note muted"><span>{clinic!.note}</span></p>}
+
+            {embed && (
+              <div class="clinic-map" data-map-src={embed} data-map-title={`${t.mapTitle} ${clinic!.name}`}>
+                <button class="map-load" type="button">
+                  <span class="map-pin-badge"><Icon name="map-pin" /></span>
+                  <span class="map-load-label">{t.showMap}</span>
+                  <span class="map-load-note">{t.mapNotice}</span>
+                </button>
+              </div>
+            )}
+
             <div class="clinic-ctas row">
               <a class="btn btn-primary" href={bookHref} {...bookExt}><span>{clinics.bookCtaLabel}</span></a>
-              {maps && <a class="btn btn-secondary" href={maps} target="_blank" rel="noopener">{directionsLabel}</a>}
+              {maps && <a class="btn btn-secondary" href={maps} target="_blank" rel="noopener">{t.directions}</a>}
             </div>
           </div>
         );
@@ -70,8 +115,9 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
   .heading { color: var(--blue-deep); }
   .intro { max-width: 62ch; margin-bottom: 34px; }
   .clinic { display: flex; flex-direction: column; }
+  .clinic-media { position: relative; margin-bottom: 16px; }
   /* 3:2 photo banner at the top of the card — architecture reads well wide. */
-  .clinic-img { width: 100%; aspect-ratio: 3 / 2; height: auto; object-fit: cover; border-radius: 10px; margin-bottom: 16px; }
+  .clinic-img { width: 100%; aspect-ratio: 3 / 2; height: auto; object-fit: cover; border-radius: 10px; display: block; }
   .clinic h3 { color: var(--blue-deep); }
   .clinic .line { display: flex; gap: 10px; font: var(--t-body-sm); padding: 4px 0; align-items: flex-start; }
   /* Address / hours icons: brand blue on the light card (cyan would be too faint). */
@@ -79,4 +125,72 @@ const bookExt = bookHref.startsWith('http') ? { target: '_blank', rel: 'noopener
   .clinic .note { padding-left: 27px; }
   .clinic-ctas { margin-top: auto; padding-top: 18px; }
   .payment { margin-top: 28px; font-size: 14px; }
+
+  /* "Cabinet principal" pill. Cyan stays decorative (border + star): the text sits on
+     white in deep blue, never on cyan, per the charte. */
+  .clinic-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; color: var(--blue-deep);
+    border: 2px solid var(--cyan); border-radius: var(--radius-pill);
+    padding: 5px 12px 5px 9px; font-size: 13px; font-weight: 700; letter-spacing: .01em;
+    box-shadow: 0 4px 14px rgba(3, 20, 55, .18);
+  }
+  .clinic-media .clinic-badge { position: absolute; top: 12px; left: 12px; }
+  .clinic-badge.inline { align-self: flex-start; margin-bottom: 12px; }
+  .clinic-badge :global(svg) { width: 15px; height: 15px; fill: var(--cyan); stroke: var(--blue-deep); stroke-width: 1.6; stroke-linejoin: round; }
+
+  /* Click-to-load map: nothing from Google is fetched until the visitor asks. */
+  .clinic-map {
+    margin-top: 16px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--hairline); background: var(--canvas);
+  }
+  .clinic-map :global(iframe) { width: 100%; height: 100%; border: 0; display: block; }
+  .map-load {
+    width: 100%; height: 100%; cursor: pointer; border: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    font-family: var(--font); color: var(--blue-deep);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(63, 229, 250, .22), transparent 55%),
+      repeating-linear-gradient(0deg, transparent 0 22px, rgba(11, 84, 224, .06) 22px 23px),
+      repeating-linear-gradient(90deg, transparent 0 22px, rgba(11, 84, 224, .06) 22px 23px),
+      var(--canvas);
+    outline: 3px solid transparent; outline-offset: -3px;
+    transition: outline-color var(--dur) var(--ease);
+  }
+  .map-load:hover { outline-color: var(--cyan); }
+  .map-load:focus-visible { outline-color: var(--blue); }
+  .map-pin-badge {
+    width: 44px; height: 44px; border-radius: 50%; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(11, 84, 224, .18);
+  }
+  .map-pin-badge :global(svg) { width: 22px; height: 22px; stroke: var(--blue-deep); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .map-load-label { font-size: 15px; font-weight: 700; }
+  .map-load-note { font-size: 12px; color: var(--ink-muted); padding: 0 12px; text-align: center; }
 </style>
+
+<script>
+  // Swap each placeholder for the real Google Maps iframe — on click, or straight away
+  // when the visitor already accepted third-party services in the cookie banner.
+  const loadMap = (box: HTMLElement, lazy = false) => {
+    if (box.dataset.loaded) return;
+    box.dataset.loaded = '1';
+    const iframe = document.createElement('iframe');
+    iframe.src = box.dataset.mapSrc!;
+    iframe.title = box.dataset.mapTitle ?? 'Google Maps';
+    // Load right away after a click; only defer when auto-loading off-screen maps.
+    iframe.loading = lazy ? 'lazy' : 'eager';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.allowFullscreen = true;
+    box.replaceChildren(iframe);
+  };
+
+  const boxes = document.querySelectorAll<HTMLElement>('.clinic-map[data-map-src]');
+  boxes.forEach((box) => {
+    box.querySelector('.map-load')?.addEventListener('click', () => loadMap(box));
+  });
+
+  let consent: string | null = null;
+  try { consent = localStorage.getItem('cookie-consent'); } catch { /* storage blocked */ }
+  if (consent === 'accepted') boxes.forEach((box) => loadMap(box, true));
+</script>

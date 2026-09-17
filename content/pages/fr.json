@@ -169,7 +169,8 @@
         "address": "Château Labro, 13 Impasse Peybouquey, 33400 Talence",
         "hours": "08h00 - 20h00",
         "note": "Parking gratuit à disposition",
-        "image": "/images/cabinet-talence.jpg"
+        "image": "/images/cabinet-talence.jpg",
+        "badge": "Cabinet principal"
       },
       {
         "name": "Mérignac",
@@ -209,7 +210,7 @@
     }
   },
   "cookie": {
-    "message": "Ce site n'utilise aucun cookie de suivi. Si des services tiers (statistiques, prise de rendez-vous) sont ajoutés un jour, ils ne se chargeront qu'avec votre accord.",
+    "message": "Ce site n'utilise aucun cookie de suivi. Les cartes Google Maps des cabinets ne se chargent qu'avec votre accord : en cliquant sur « D'accord », ou sur « Afficher la carte ».",
     "acceptLabel": "D'accord",
     "declineLabel": "Refuser"
   },
