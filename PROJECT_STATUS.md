@@ -10,7 +10,8 @@
 OVH DNS: four A records to 185.199.108–111.153 and `www` CNAME to `fabosteo77.github.io.`; MX/TXT untouched.
 Tina Cloud is connected (repo variable `TINA_PUBLIC_CLIENT_ID`, secret `TINA_TOKEN`); the owner edits at
 /admin (collections sit behind the ☰ menu). Formsubmit is activated. The old Netlify site is no longer
-reachable through the domain.
+reachable through the domain. Google Search Console: domain property fabosteo.fr verified by DNS TXT
+(2026-09-18), sitemap https://fabosteo.fr/sitemap-index.xml submitted.
 ---
 
 ## 1. What this project is
