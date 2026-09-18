@@ -5,14 +5,12 @@
 > If you are a new Claude Code session on a new machine: read this top-to-bottom, then start at
 > **§7 "Transferring to a new computer + accounts"** and run Phase 0 before anything else.
 
-**Resume in one line (2026-09-17):** Site built (Phases 2–4 done) and **live on GitHub Pages at
-https://fabosteo77.github.io** (repo `Fabosteo77/fabosteo77.github.io`, deployed by
-`.github/workflows/deploy.yml`). Tina Cloud is **not set up yet**: CI builds with a local Tina server and
-does not publish `/admin`; once the repo variable `TINA_PUBLIC_CLIENT_ID` and secret `TINA_TOKEN` exist,
-CI switches to `npm run tina:build` automatically. Formsubmit is activated and tested (2026-09-17). Still to do: Tina Cloud account,
-then Phase 6 (point fabosteo.fr at GitHub Pages; the old site is on Netlify via OVH DNS
-until then).
-
+**Resume in one line (2026-09-18):** Site **live at https://fabosteo.fr** (GitHub Pages, repo
+`Fabosteo77/fabosteo77.github.io`, custom domain + Let's Encrypt cert approved, HTTPS enforced; www → apex).
+OVH DNS: four A records to 185.199.108–111.153 and `www` CNAME to `fabosteo77.github.io.`; MX/TXT untouched.
+Tina Cloud is connected (repo variable `TINA_PUBLIC_CLIENT_ID`, secret `TINA_TOKEN`); the owner edits at
+/admin (collections sit behind the ☰ menu). Formsubmit is activated. The old Netlify site is no longer
+reachable through the domain.
 ---
 
 ## 1. What this project is
