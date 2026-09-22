@@ -90,7 +90,7 @@ const jsonLd = {
     <SectionWave from="var(--cyan)" to="var(--canvas)" flip />
     <Expertise id="expertise" expertise={page.expertise ?? {}} />
     <SectionWave from="var(--canvas)" to="var(--blue-deep)" />
-    <Reviews id={anchors.reviews} reviews={page.reviews ?? {}} googleReviewsUrl={settings.googleReviewsUrl} />
+    <Reviews id={anchors.reviews} reviews={page.reviews ?? {}} googleReviewsUrl={settings.googleReviewsUrl} writeReviewUrl={settings.writeReviewUrl} />
     <SectionWave from="var(--cyan)" to="var(--canvas)" flip />
     <Clinics
       id={anchors.clinics}

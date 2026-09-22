@@ -63,6 +63,7 @@ export default defineConfig({
             label: 'Lien Doctolib « Prendre rendez-vous » (laisser vide : les boutons mènent au formulaire)',
           },
           { type: 'string', name: 'googleReviewsUrl', label: 'Lien vers vos avis Google' },
+          { type: 'string', name: 'writeReviewUrl', label: 'Lien « Laisser un avis » (Google : Demander des avis)' },
           {
             type: 'object',
             name: 'socials',
@@ -240,6 +241,7 @@ export default defineConfig({
                 ],
               },
               { type: 'string', name: 'moreCtaLabel', label: 'Bouton « Voir plus d’avis »' },
+              { type: 'string', name: 'writeCtaLabel', label: 'Bouton « Laisser un avis »' },
             ],
           },
           {

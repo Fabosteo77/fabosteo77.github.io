@@ -8,12 +8,15 @@ interface Props {
     heading?: string | null;
     items?: ({ author?: string | null; date?: string | null; rating?: number | null; text?: string | null } | null)[] | null;
     moreCtaLabel?: string | null;
+    writeCtaLabel?: string | null;
   };
   googleReviewsUrl?: string | null;
+  writeReviewUrl?: string | null;
 }
-const { id, reviews, googleReviewsUrl } = Astro.props;
+const { id, reviews, googleReviewsUrl, writeReviewUrl } = Astro.props;
 const items = (reviews.items ?? []).filter(Boolean);
 const moreUrl = googleReviewsUrl?.trim();
+const writeUrl = writeReviewUrl?.trim();
 ---
 
 <section id={id} class="bg-gradient on-blue">
@@ -38,9 +41,14 @@ const moreUrl = googleReviewsUrl?.trim();
         </figure>
       ))}
     </div>
-    {reviews.moreCtaLabel && moreUrl && (
+    {((reviews.writeCtaLabel && writeUrl) || (reviews.moreCtaLabel && moreUrl)) && (
       <div class="row cta-row">
-        <a class="btn btn-secondary" href={moreUrl} target="_blank" rel="noopener">{reviews.moreCtaLabel}</a>
+        {reviews.writeCtaLabel && writeUrl && (
+          <a class="btn btn-primary" href={writeUrl} target="_blank" rel="noopener">{reviews.writeCtaLabel}</a>
+        )}
+        {reviews.moreCtaLabel && moreUrl && (
+          <a class="btn btn-secondary" href={moreUrl} target="_blank" rel="noopener">{reviews.moreCtaLabel}</a>
+        )}
       </div>
     )}
   </div>
