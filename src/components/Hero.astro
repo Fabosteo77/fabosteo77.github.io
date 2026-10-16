@@ -90,7 +90,9 @@ const stats = (hero.stats ?? []).filter((s) => s?.value);
 <style>
   /* The portrait bleeds over the top padding of the About section (design example). */
   /* Charte: gradient background — text stays on the deep-blue side, cyan behind the portrait. */
-  .hero { padding-top: 0; padding-bottom: 0; overflow: visible; background: var(--gradient-hero); }
+  /* overflow-x: clip keeps the drifting glow from widening the page on phones
+     (which made the fixed action bar slide sideways); vertical bleed stays visible. */
+  .hero { padding-top: 0; padding-bottom: 0; overflow: visible; overflow-x: clip; background: var(--gradient-hero); }
   /* Ligne de démarcation, dans la page (non collante) : bord supérieur collé à la frontière
      en-tête/héros, du bord du logo au bord du bouton de langue (largeur du contenu). */
   .hero-rule { height: 8px; background: var(--cyan); border-radius: var(--radius-pill); margin: 0 0 88px; }
