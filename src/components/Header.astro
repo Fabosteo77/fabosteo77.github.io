@@ -105,6 +105,17 @@ const menuLabel = locale === 'fr' ? 'Menu' : 'Menu';
     .lang-switch { padding: 10px 12px; }
     .header-contact { display: none; } /* Contact reachable via menu; keeps the bar uncluttered */
   }
+  /* Small phones: tighter header so "Français" (EN page) still fits on one row without
+     widening the page (which made the fixed action bar slide sideways). */
+  @media (max-width: 400px) {
+    .brand { gap: 9px; }
+    .brand img { width: 46px; height: 46px; }
+    .header-cta { gap: 8px; }
+    .lang-switch { gap: 6px; padding: 10px; }
+  }
+  @media (max-width: 380px) {
+    .lang-switch :global(svg) { display: none; }
+  }
 </style>
 
 <script>
